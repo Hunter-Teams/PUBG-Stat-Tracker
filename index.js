@@ -10,10 +10,11 @@ const options = {
     }
   };
 
+
+
+async function f() {
 var result = [];
-
-
-https.get(options, (resp) => {
+ https.get(options, (resp) => {
   let data = '';
 
   // A chunk of data has been recieved.
@@ -28,19 +29,24 @@ https.get(options, (resp) => {
       //console.log(elem.attributes);
       result.push(elem.attributes);
     });
-    //console.log("Array is:");
-    //console.log(result);
-    
+    console.log("Array is:");
+    console.log(result);    
   });
-
-
-
+  
 }).on("error", (err) => {
   console.log("Error: " + err.message);
+})
+return result 
+};
+
+
+f().then(function(result){
+  console.log("RESULT really IS:");
+  console.log(result);
+  module.exports = result;  
 });
 
-console.log("RESULT really IS:");
-console.log(result);
 
-module.exports = result;
+
+
 
