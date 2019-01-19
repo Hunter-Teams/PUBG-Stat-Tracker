@@ -28,11 +28,8 @@ function doRequest() {
   resp.on('end', () => {
     var newObj = JSON.parse(data).included;
     newObj.map((elem)=>{
-      //console.log(elem.attributes);
       result.push(elem.attributes);
-    });
-    console.log("Array is:");
-    //console.log(result);    
+    }); 
     resolve(result)
   });
 
@@ -45,10 +42,16 @@ function doRequest() {
 
 
 async function main() {
+
+
     let res = await doRequest();
     console.log("RESULT really IS:");
     console.log(res);
-    res.map((elem)=> {
+
+    client.query(`SELECT COUNT(*) FROM users;`, (err, data) => {
+        if (parseFloat(data.rows[0].count) == 0) {
+            
+        res.map((elem)=> {
 
         var name = elem.name;
     
@@ -84,17 +87,20 @@ async function main() {
           `INSERT INTO users (name ,  rank , rankPoints , wins , games, winRatio, averageDamage, kills , killDeathRatio , averageRank) VALUES ('${name}' ,  '${rank}' , '${rankPoints}' , '${wins}' , '${games}', '${winRatio}', '${averageDamage}', '${kills}' , '${killDeathRatio}' , '${averageRank}');`,
           (err, data) => {
             if (err) return console.error(err);
-            console.log(`After adding input = , length = `);
-            client.query("SELECT * from users", (err, data) => {
-              data.rows.forEach(rowObject => {
-                console.log(rowObject);
-              });
-              res.send(data.rows);
-            });
           }
         );
-    }) 
+        })
+        client.query("SELECT * from users", (err, data) => {
+            data.rows.forEach(rowObject => {
+            console.log(rowObject);
+            });
+        }); 
+    } else {
+            console.log("Filled Table");
+        }
+    }); 
 }
   
+
 main();
 
