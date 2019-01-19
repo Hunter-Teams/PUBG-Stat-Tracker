@@ -4,13 +4,17 @@
   "description": "First attempt",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "test-init": "jasmine init",
+    "test": "jasmine"
+    },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
     "https": "^1.0.0",
     "pg": "^7.8.0"
+  },
+  "devDependencies": {
+    "jasmine": "^3.3.1"
   }
 }

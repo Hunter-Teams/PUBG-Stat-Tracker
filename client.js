@@ -13,10 +13,7 @@ const client = new pg.Client({
 client.connect();
 
 client.query('select * from users', (err, data) => {
-    if (err) console.error(err);
-    console.log(data);
-    console.log("Kek");
-    
+    if (err) console.error(err);    
 })
 // export the client to use elsewhere in your express app for working with queries.
 module.exports = client;
