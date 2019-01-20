@@ -2,13 +2,39 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+body, html {
+  height: 100%;
+}
+.bg {
+
+  /*background-image: url("./images/chickendinner.jpg");*!*/
+  background-image: url("./images/gear.png");
+  /*background-image: url("./images/madmax.jpg");*/
+  /*background-image: url("./images/sunset.jpg");*/
+  height: 80vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+  /*background-image: url("./images/chickendinner.jpg");*!*/
+  /*background-image: url("./images/gear.png");*/
+  background-image: url("./images/madmaxcut.jpg");
+  /*background-image: url("./images/sunset.jpg");*/
+  height: 20vh;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  monospace;
 }
