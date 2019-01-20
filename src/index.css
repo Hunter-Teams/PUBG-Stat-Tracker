@@ -2,8 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -16,25 +16,58 @@ body, html {
   /*background-image: url("./images/chickendinner.jpg");*!*/
   background-image: url("./images/gear.png");
   /*background-image: url("./images/madmax.jpg");*/
+  /*background-image: url("./images/madmaxcut.jpg");*/
   /*background-image: url("./images/sunset.jpg");*/
-  height: 80vh;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .header {
+
   /*background-image: url("./images/chickendinner.jpg");*!*/
   /*background-image: url("./images/gear.png");*/
+  /*background-image: url("./images/madmax.jpg");*/
   background-image: url("./images/madmaxcut.jpg");
   /*background-image: url("./images/sunset.jpg");*/
   height: 20vh;
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+.badging {
+  background-image: url("./images/PUBG-icon-black-75.png");
+  height: 75px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.cunyStats {
+  background-image: url("./images/cuny2x.png");
+  height: 75px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: left;
+    background-color: #343a40;
+}
+
+.flex-container > div {
+  width: 400px;
+  height: 52px;
+  /*margin: 1px;*/
+  justify-content: center;
+  text-align: center;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-  monospace;
+    monospace;
 }

@@ -32,7 +32,11 @@ export default class NavBarClass extends React.Component {
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">PUBG Stats Manager</NavbarBrand>
+          <NavbarBrand href="./index">
+            <div className="flex-container">
+              <div className="cunyStats" />
+            </div>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -40,11 +44,9 @@ export default class NavBarClass extends React.Component {
                 <NavLink href="/components/">Top Ten</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
-                </NavLink>
+                <NavLink href="https://www.pubg.com/">PUBG Official</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+              {/*<UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Options
                 </DropdownToggle>
@@ -54,7 +56,7 @@ export default class NavBarClass extends React.Component {
                   <DropdownItem divider />
                   <DropdownItem>Reset</DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown>*/}
             </Nav>
           </Collapse>
         </Navbar>
