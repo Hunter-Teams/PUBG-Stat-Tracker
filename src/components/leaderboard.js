@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import "../index.css";
 
-export default class Leaderboard extends React.Component {
+class Leaderboard extends Component {
   constructor(props) {
     super(props);
   }
   render() {
+    // var { rank, name, kd, wr, kills, wins, matches, score } = this.props.data;
+
     return (
       <div>
         <table>
@@ -124,3 +126,5 @@ export default class Leaderboard extends React.Component {
     );
   }
 }
+
+export default Leaderboard;
