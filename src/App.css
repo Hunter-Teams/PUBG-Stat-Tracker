@@ -80,3 +80,11 @@ footer {
   height: 5vh;
   color: whitesmoke;
 }
+
+.cunyStats2 {
+  background: url("./images/cuny2x.png") right;
+  /*height: 52px;*/
+  /*width: 398px;*/
+  background-size: auto;
+  flex-direction: row-reverse;
+}

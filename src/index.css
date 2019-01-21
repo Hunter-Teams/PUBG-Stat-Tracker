@@ -13,8 +13,6 @@ body, html {
   font-size: 20px;
 }
 
-
-
 /*.bg {*/
   /*background: url("./images/gear.png") no-repeat center center;*/
   /*!*background: url("./images/madmaxcut.jpg") no-repeat center center;*!*/
@@ -53,9 +51,6 @@ body, html {
 .flex-container > div {
   width: 391px;
   height: 52px;
-  /*margin: 1px;*/
-  /*justify-content: center;*/
-  /*text-align: center;*/
 }
 
 .flex-container2 {
@@ -66,11 +61,6 @@ body, html {
 .flex-container2 >div {
   width: 90px;
   height: 52px;
-  /*margin: 1px;*/
-  /*justify-content: right;*/
-  /*text-align: center;*/
-  /*line-height: 75px;*/
-  /*font-size: 30px;*/
 }
 
 .flex-container3 {
@@ -91,22 +81,21 @@ body, html {
 .flex-container4 >div {
   width: 58px;
   height: 52px;
-  /*margin: 1px;*/
-  /*justify-content: right;*/
-  /*text-align: center;*/
-  /*line-height: 75px;*/
-  /*font-size: 30px;*/
+}
+
+.flex-container5 {
+  display: flex;
+  justify-content: right;
+  flex-direction: row-reverse;
+}
+
+.flex-container5 >div {
+  width: 400px;
+  height: 52px;
 }
 
 .cunyStats {
   background: url("./images/cuny2x.png");
-  /*height: 52px;*/
-  /*width: 398px;*/
-  background-size: auto;
-}
-
-.cunyStats2 {
-  background: url("./images/cuny2x.png") right;
   /*height: 52px;*/
   /*width: 398px;*/
   background-size: auto;

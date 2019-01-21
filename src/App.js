@@ -21,11 +21,9 @@ class App extends Component {
             </div>
           </div>
           <footer>
-            <a className="active" href="/public/index.html">
-              <div className="flex-container">
-                <div className="cunyStats" />
-              </div>
-            </a>
+            <div className="flex-container5">
+              <div className="cunyStats" />
+            </div>
           </footer>
         </body>
       </div>
