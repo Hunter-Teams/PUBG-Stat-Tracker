@@ -58,7 +58,7 @@ export default class NavBarClass extends React.Component {
           </li>
 
           <li>
-            <a href="/public/index.html">
+            <a className="active" href="/public/index.html">
               <div className="flex-container3">
                 <div className="topTen" />
               </div>

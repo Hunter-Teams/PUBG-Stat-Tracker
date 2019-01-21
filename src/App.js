@@ -15,11 +15,10 @@ class App extends Component {
           <NavBarClass />
         </ul>
         <body>
-          <div className="bg">
-            <div>
-              <Content />
-            </div>
+          <div>
+            <Content />
           </div>
+          <div className="bg" />
         </body>
         <footer>
           <div className="flex-container5">
