@@ -1,0 +1,60 @@
+.bg {
+  background: url("./images/gear.png") no-repeat center center;
+  /*background: url("./images/madmaxcut.jpg") no-repeat center center;*/
+  /*background: url("./images/madmax.jpg") no-repeat center center;*/
+  /*background: url("./images/chickendinner.jpg") no-repeat center center;*/
+  /*background: url("./images/sunset.jpg") no-repeat cente  r center;*/
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 90vh;
+  border-bottom: 2px solid black;
+}
+
+.header {
+  /*background: url("./images/gear.png") no-repeat center center;*/
+  /*background: url("./images/madmaxcut.jpg") no-repeat center center;*/
+  background: url("./images/madmax.jpg") no-repeat top;
+  /*background: url("./images/chickendinner.jpg") no-repeat center center;*/
+  /*background: url("./images/sunset.jpg") no-repeat center center;*/
+  height: 60vh;
+  background-size: cover;
+}
+
+.header h5 {
+  color: #3c1a1a;
+}
+
+.column {
+  float: left;
+  padding: 20px 8px;
+}
+
+.column.left {
+  width: 18%;
+}
+
+.column.right {
+  width: 20%;
+}
+
+.column.middle {
+  width: 60%;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+footer {
+  height: 5vh;
+  color: whitesmoke;
+}
+
+.cunyStats2 {
+  background: url("./images/cuny2x.png") right;
+  background-size: auto;
+  flex-direction: row-reverse;
+}
