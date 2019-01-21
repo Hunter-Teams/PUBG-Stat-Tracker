@@ -1,65 +1,70 @@
 import React from "react";
-
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import "../index.css";
+import PropTypes from "prop-types";
 
 export default class NavBarClass extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggle = this.toggle.bind(this);
+    this.toggleActive = this.toggleActive.bind(this);
     this.state = {
-      isOpen: false
+      isActive: false
     };
   }
-  toggle() {
+  toggleActive() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isActive: !this.state.isActive
     });
   }
   render() {
     return (
       <div>
-        <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="./index">
-            <div className="flex-container">
-              <div className="cunyStats" />
-            </div>
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Top Ten</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://www.pubg.com/">PUBG Official</NavLink>
-              </NavItem>
-              {/*<UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>*/}
-            </Nav>
-          </Collapse>
-        </Navbar>
+        <ul>
+          <li style={{ float: "left" }}>
+            <a className="active" href="/public/index.html">
+              <div className="flex-container">
+                <div className="cunyStats" />
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.pubg.com/">
+              <div className="flex-container2">
+                <div className="pubgOfficial" />
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/public/index.html">
+              <div className="flex-container4">
+                <div className="contact" />
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/public/index.html">
+              <div className="flex-container3">
+                <div className="search" />
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="/public/index.html">
+              <div className="flex-container3">
+                <div className="about" />
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="/public/index.html">
+              <div className="flex-container3">
+                <div className="topTen" />
+              </div>
+            </a>
+          </li>
+        </ul>
       </div>
     );
   }

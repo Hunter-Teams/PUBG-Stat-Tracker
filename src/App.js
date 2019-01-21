@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import NavBarClass from "./components/navbar";
-import BackgroundImagePage from "./components/backgroundImage";
 
 class App extends Component {
   render() {
@@ -9,15 +8,52 @@ class App extends Component {
       <div className="App">
         <div className="header" />
 
-        <NavBarClass />
-        <div className="background">
-          <div>
-            <p>stuff happens here</p>
-          </div>
-        </div>
-
+        <ul>
+          <NavBarClass />
+        </ul>
         <body>
-          <BackgroundImagePage />
+          <div className="bg">
+            <div>
+              <h3>Sticky Navigation Bar Example</h3>
+              <p>
+                The navbar will <strong>stick</strong> to the top when you reach
+                its scroll position.
+              </p>
+              <p>
+                <strong>Note:</strong> Internet Explorer, Edge 15 and earlier
+                versions do not support sticky positioning. Safari requires a
+                -webkit- prefix.
+              </p>
+              <p>
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet,
+                illum definitiones no quo, maluisset concludaturque et eum,
+                altera fabulas ut quo. Atqui causae gloriatur ius te, id agam
+                omnis evertitur eum. Affert laboramus repudiandae nec et.
+                Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+              </p>
+              <p>
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet,
+                illum definitiones no quo, maluisset concludaturque et eum,
+                altera fabulas ut quo. Atqui causae gloriatur ius te, id agam
+                omnis evertitur eum. Affert laboramus repudiandae nec et.
+                Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+              </p>
+              <p>
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet,
+                illum definitiones no quo, maluisset concludaturque et eum,
+                altera fabulas ut quo. Atqui causae gloriatur ius te, id agam
+                omnis evertitur eum. Affert laboramus repudiandae nec et.
+                Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+              </p>
+              <p>
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet,
+                illum definitiones no quo, maluisset concludaturque et eum,
+                altera fabulas ut quo. Atqui causae gloriatur ius te, id agam
+                omnis evertitur eum. Affert laboramus repudiandae nec et.
+                Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+              </p>
+            </div>
+          </div>
         </body>
       </div>
     );
