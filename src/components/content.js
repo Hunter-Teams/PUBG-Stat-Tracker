@@ -2,6 +2,7 @@ import React from "react";
 import "../index.css";
 import PropTypes from "prop-types";
 import Leaderboard from "./leaderboard";
+import axios from 'axios';
 
 export default class Content extends React.Component {
   constructor(props) {
@@ -9,8 +10,30 @@ export default class Content extends React.Component {
 
     this.toggleActive = this.toggleActive.bind(this);
     this.state = {
-      isActive: false
+      isActive: false,
+      table: [],
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit() {
+    axios.get(`http://localhost:3001/api`)
+      .then(response => {
+        //console.log(response.data);
+        var newArr = [];
+        response.data.forEach(elem => {
+          //console.log(elem);
+          newArr.push(elem);
+        })
+        //console.log(newArr);
+        this.setState({
+          table: newArr,
+        });
+        console.log(this.state.table);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   toggleActive() {
@@ -19,6 +42,9 @@ export default class Content extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.handleSubmit();
+  }
   render() {
     return (
       <div>
