@@ -20,12 +20,12 @@ class App extends Component {
               <Content />
             </div>
           </div>
-          <footer>
-            <div className="flex-container5">
-              <div className="cunyStats" />
-            </div>
-          </footer>
         </body>
+        <footer>
+          <div className="flex-container5">
+            <div className="cunyStats" />
+          </div>
+        </footer>
       </div>
     );
   }

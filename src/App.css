@@ -1,38 +1,13 @@
-/*.App {*/
-  /*text-align: center;*/
-/*}*/
-
-/*.App-logo {*/
-  /*animation: App-logo-spin infinite 20s linear;*/
-  /*height: 40vmin;*/
-/*}*/
-
-/*.App-header {*/
-  /*background-color: #282c34;*/
-  /*min-height: 100vh;*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*align-items: center;*/
-  /*justify-content: center;*/
-  /*font-size: calc(10px + 2vmin);*/
-  /*color: white;*/
-/*}*/
-
-/*.App-link {*/
-  /*color: #61dafb;*/
-/*}*/
-
-
 .bg {
   background: url("./images/gear.png") no-repeat center center;
   /*background: url("./images/madmaxcut.jpg") no-repeat center center;*/
   /*background: url("./images/madmax.jpg") no-repeat center center;*/
   /*background: url("./images/chickendinner.jpg") no-repeat center center;*/
-  /*background: url("./images/sunset.jpg") no-repeat center center;*/
+  /*background: url("./images/sunset.jpg") no-repeat cente  r center;*/
   -webkit-background-size: cover;
   background-size: cover;
-  height: 92vh;
-  /*order: 2px solid black;*/
+  height: 90vh;
+  border-bottom: 2px solid black;
 }
 
 .header {
@@ -49,13 +24,11 @@
   color: #3c1a1a;
 }
 
-
 .column {
   float: left;
   padding: 20px 8px;
 }
 
-/* Left and right column */
 .column.left {
   width: 18%;
 }
@@ -64,7 +37,6 @@
   width: 20%;
 }
 
-/* Middle column */
 .column.middle {
   width: 60%;
 }
@@ -83,8 +55,6 @@ footer {
 
 .cunyStats2 {
   background: url("./images/cuny2x.png") right;
-  /*height: 52px;*/
-  /*width: 398px;*/
   background-size: auto;
   flex-direction: row-reverse;
 }

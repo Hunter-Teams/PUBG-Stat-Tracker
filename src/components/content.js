@@ -26,7 +26,7 @@ export default class Content extends React.Component {
           <div className="column left" />
 
           <div className="column middle">
-            <h2 className="tableTitle">Leaderboard: Solo</h2>
+            <h1 className="tableTitle">Leaderboard: Solo</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
               sit amet pretium urna. Vivamus venenatis velit nec neque
