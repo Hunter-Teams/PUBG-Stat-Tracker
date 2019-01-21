@@ -13,27 +13,29 @@ body, html {
   font-size: 20px;
 }
 
-.bg {
-  background: url("./images/gear.png") no-repeat center center;
-  /*background: url("./images/madmaxcut.jpg") no-repeat center center;*/
-  /*background: url("./images/madmax.jpg") no-repeat center center;*/
-  /*background: url("./images/chickendinner.jpg") no-repeat center center;*/
-  /*background: url("./images/sunset.jpg") no-repeat center center;*/
-  -webkit-background-size: cover;
-  background-size: cover;
-  height: 100vh;
-  /*order: 2px solid black;*/
-}
 
-.header {
+
+/*.bg {*/
   /*background: url("./images/gear.png") no-repeat center center;*/
-  background: url("./images/madmaxcut.jpg") no-repeat center center;
-  /*background: url("./images/madmax.jpg") no-repeat center center;*/
-  /*background: url("./images/chickendinner.jpg") no-repeat center center;*/
-  /*background: url("./images/sunset.jpg") no-repeat center center;*/
-  height: 20vh;
-  background-size: cover;
-}
+  /*!*background: url("./images/madmaxcut.jpg") no-repeat center center;*!*/
+  /*!*background: url("./images/madmax.jpg") no-repeat center center;*!*/
+  /*!*background: url("./images/chickendinner.jpg") no-repeat center center;*!*/
+  /*!*background: url("./images/sunset.jpg") no-repeat center center;*!*/
+  /*-webkit-background-size: cover;*/
+  /*background-size: cover;*/
+  /*height: 100vh;*/
+  /*!*order: 2px solid black;*!*/
+/*}*/
+
+/*.header {*/
+  /*!*background: url("./images/gear.png") no-repeat center center;*!*/
+  /*background: url("./images/madmaxcut.jpg") no-repeat center center;*/
+  /*!*background: url("./images/madmax.jpg") no-repeat center center;*!*/
+  /*!*background: url("./images/chickendinner.jpg") no-repeat center center;*!*/
+  /*!*background: url("./images/sunset.jpg") no-repeat center center;*!*/
+  /*height: 20vh;*/
+  /*background-size: cover;*/
+/*}*/
 
 /*.badging {*/
   /*background-image: url("./images/PUBG-icon-black-75.png");*/
@@ -42,13 +44,6 @@ body, html {
   /*background-repeat: no-repeat;*/
   /*background-size: auto;*/
 /*}*/
-
-.cunyStats {
-  background: url("./images/cuny2x.png");
-  /*height: 52px;*/
-  /*width: 398px;*/
-  background-size: auto;
-}
 
 .flex-container {
   display: flex;
@@ -101,6 +96,20 @@ body, html {
   /*text-align: center;*/
   /*line-height: 75px;*/
   /*font-size: 30px;*/
+}
+
+.cunyStats {
+  background: url("./images/cuny2x.png");
+  /*height: 52px;*/
+  /*width: 398px;*/
+  background-size: auto;
+}
+
+.cunyStats2 {
+  background: url("./images/cuny2x.png") right;
+  /*height: 52px;*/
+  /*width: 398px;*/
+  background-size: auto;
 }
 
 .pubgOfficial {
@@ -172,4 +181,12 @@ li a:hover {
 
 .active {
   background-color: #691b1c;
+}
+
+.break {
+  width: 10px;
+}
+
+.tableTitle {
+  text-align: center;
 }
