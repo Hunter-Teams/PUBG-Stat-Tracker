@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import NavBarClass from "./components/NavBar";
 import Content from "./components/content";
+import About from "./components/about";
 
 class App extends Component {
   render() {
@@ -15,11 +16,10 @@ class App extends Component {
           <NavBarClass />
         </ul>
         <body>
-          <div className="bg">
-            <div>
-              <Content />
-            </div>
+          <div>
+            <Content />
           </div>
+          <div className="bg" />
         </body>
         <footer>
           <div className="flex-container5">
