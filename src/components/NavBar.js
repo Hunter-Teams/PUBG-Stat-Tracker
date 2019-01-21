@@ -6,15 +6,15 @@ export default class NavBarClass extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggleActive = this.toggleActive.bind(this);
-    this.state = {
-      isActive: false
-    };
-  }
-  toggleActive() {
-    this.setState({
-      isActive: !this.state.isActive
-    });
+  //   this.toggleActive = this.toggleActive.bind(this);
+  //   this.state = {
+  //     isActive: false
+  //   };
+  // }
+  // toggleActive() {
+  //   this.setState({
+  //     isActive: !this.state.isActive
+  //   });
   }
   render() {
     return (
@@ -58,7 +58,7 @@ export default class NavBarClass extends React.Component {
           </li>
 
           <li>
-            <a href="/public/index.html">
+            <a className="active" href="/public/index.html">
               <div className="flex-container3">
                 <div className="topTen" />
               </div>

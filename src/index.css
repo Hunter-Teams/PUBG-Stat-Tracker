@@ -144,3 +144,18 @@ li a:hover {
 .tableTitle {
   text-align: center;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th {
+  background-color: #f5f5f5;
+}
+th, td {
+  padding: 20px;
+  text-align: -moz-left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#f5f5f5;}
