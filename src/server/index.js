@@ -13,6 +13,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(require('./pg'))
 app.use('/api', require('./router'))
 
 app.listen(3001, () => `listening on 3001`)

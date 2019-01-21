@@ -9,7 +9,7 @@ function doRequest() {
     var result = [];
     const options = {
       host: 'api.pubg.com',
-      path: '/shards/steam/leaderboards/solo?page[number]=0',
+      path: `/shards/steam/leaderboards/duo`,
       method: 'GET',
       headers: {
           "Accept": "application/vnd.api+json",
@@ -44,14 +44,20 @@ function doRequest() {
 async function main() {
 
 
-    let res = await doRequest();
+    let res = await doRequest();   //From first page
+    //let res1 = await doRequest(1);  //From second page
+    //res = res.concat(res1);         //Concat both data
+    //res = res.filter(function(elem){    //Remove last 4 so that top ten left
+        //return ( parseFloat(elem.rank)< 11)
+    //})       
+
     console.log("RESULT really IS:");
     console.log(res);
 
     client.query(`SELECT COUNT(*) FROM users;`, (err, data) => {
         if (parseFloat(data.rows[0].count) == 0) {
             
-        res.map((elem)=> {
+        res.map((elem) => {
 
         var name = elem.name;
     
