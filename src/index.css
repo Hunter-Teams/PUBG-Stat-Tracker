@@ -1,0 +1,146 @@
+body {
+  /*margin: 0;*/
+  /*padding: 0;*/
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, html {
+  height: 100%;
+  font-size: 20px;
+}
+
+/*.badging {*/
+  /*background-image: url("./images/PUBG-icon-black-75.png");*/
+  /*height: 75px;*/
+  /*background-position: center;*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: auto;*/
+/*}*/
+
+.flex-container {
+  display: flex;
+  justify-content: left;
+}
+
+.flex-container > div {
+  width: 391px;
+  /*width: 391px;*/
+  height: 52px;
+}
+
+.flex-container2 {
+  display: flex;
+  justify-content: right;
+}
+
+.flex-container2 >div {
+  width: 110px;
+  /*width: 90px;*/
+  height: 52px;
+}
+
+.flex-container3 {
+  display: flex;
+  justify-content: right;
+}
+
+.flex-container3 >div {
+  width: 70px;
+  /*width: 55px;*/
+  height: 52px;
+}
+
+.flex-container4 {
+  display: flex;
+  justify-content: right;
+}
+
+.flex-container4 >div {
+  width: 78px;
+  /*width: 58px;*/
+  height: 52px;
+}
+
+.flex-container5 {
+  display: flex;
+  justify-content: right;
+  flex-direction: row-reverse;
+}
+
+.flex-container5 >div {
+  width: 400px;
+  height: 52px;
+}
+
+.cunyStats {
+  background: url("./images/cuny2x.png");
+  background-size: auto;
+}
+
+.pubgOfficial {
+  background: url("./images/pubgOfficial.png") no-repeat center;
+}
+
+.topTen {
+  background: url("./images/topTen.png") no-repeat center;
+}
+
+.about {
+  background: url("./images/about.png") no-repeat center;
+}
+
+.search {
+  background: url("./images/search.png") no-repeat center;
+}
+
+.contact {
+  background: url("./images/contact.png") no-repeat center;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3c1a1a;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: #c98905;
+  text-align: center;
+  padding: 4px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #691b1c;
+}
+
+.break {
+  width: 10px;
+}
+
+.tableTitle {
+  text-align: center;
+}
