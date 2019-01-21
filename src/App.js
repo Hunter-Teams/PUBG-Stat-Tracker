@@ -15,12 +15,12 @@ class App extends Component {
         <ul>
           <NavBarClass />
         </ul>
-        <body>
+        <div>
           <div>
             <Content />
           </div>
           <div className="bg" />
-        </body>
+        </div>
         <footer>
           <div className="flex-container5">
             <div className="cunyStats" />
