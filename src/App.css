@@ -1,12 +1,12 @@
 .bg {
-  background: url("./images/gear.png") no-repeat center center;
+  background: url("./images/gearCut.png") no-repeat center top;
   /*background: url("./images/madmaxcut.jpg") no-repeat center center;*/
   /*background: url("./images/madmax.jpg") no-repeat center center;*/
   /*background: url("./images/chickendinner.jpg") no-repeat center center;*/
   /*background: url("./images/sunset.jpg") no-repeat cente  r center;*/
   -webkit-background-size: cover;
   background-size: cover;
-  height: 120vh;
+  height: 60vh;
   border-bottom: 2px solid black;
 }
 
