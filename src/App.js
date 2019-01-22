@@ -1,32 +1,29 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-import NavBarClass from "./components/NavBar";
-import Content from "./components/content";
+import Search from "./components/search";
+import TopTen from "./components/TopTen";
 import About from "./components/about";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="header">
-          {/*<h5>Stats tracker, leaderboards and game information for PUBG</h5>*/}
-        </div>
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-        <ul>
-          <NavBarClass />
-        </ul>
-        <body>
-          <div>
-            <Content />
-          </div>
-          <div className="bg" />
-        </body>
-        <footer>
-          <div className="flex-container5">
-            <div className="cunyStats" />
-          </div>
-        </footer>
-      </div>
+  render() {
+    const TopTenComponent = () => <TopTen />;
+    const SearchComponent = () => <Search />;
+    const AboutComponent = () => <About />;
+
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/" render={TopTenComponent} />
+          <Route exact path="/about" render={AboutComponent} />
+          <Route exact path="/search" render={SearchComponent} />
+        </Switch>
+      </Router>
     );
   }
 }
