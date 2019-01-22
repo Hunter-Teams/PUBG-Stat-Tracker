@@ -2,7 +2,7 @@ import React from "react";
 import "../index.css";
 import PropTypes from "prop-types";
 import Leaderboard from "./leaderboard";
-import Advertising from "./advertising";
+import Spinner from "./Spinner";
 import axios from "axios";
 
 export default class Content extends React.Component {
@@ -12,7 +12,8 @@ export default class Content extends React.Component {
     this.toggleActive = this.toggleActive.bind(this);
     this.state = {
       isActive: false,
-      table: []
+      table: [],
+      dataRecieved: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,9 +30,12 @@ export default class Content extends React.Component {
         });
         //console.log(newArr);
         this.setState({
-          table: newArr
+          table: newArr,
+          dataRecieved: true
         });
+        console.log("this.state.table content");
         console.log(this.state.table);
+        this.forceUpdate();
       })
       .catch(err => {
         console.log(err);
@@ -47,28 +51,48 @@ export default class Content extends React.Component {
   componentDidMount() {
     this.handleSubmit();
   }
-  render() {
-    return (
-      <div>
-        <div className="row">
-          <div className="column left" />
 
-          <div className="column middle">
-            <h1 className="tableTitle">Leaderboard: Solo</h1>
-            <Leaderboard />
-            <p className="tableFoot">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              sit amet pretium urna. Vivamus venenatis velit nec neque
-              ultricies, eget elementum magna tristique. Quisque vehicula, risus
-              eget aliquam placerat, purus leo tincidunt eros, eget luctus quam
-              orci in velit. Praesent scelerisque tortor sed accumsan convallis.
-            </p>
-          </div>
-          <div className="column right">
-            <Advertising />
+  renderContent() {
+    if (this.state.dataRecieved) {
+      return (
+        <div>
+          <div className="row">
+            <div className="column left" />
+
+            <div className="column middle">
+              <h1 className="tableTitle">Leaderboard: Solo</h1>
+              <Leaderboard table={this.state.table} />
+              <p className="tableFoot">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas sit amet pretium urna. Vivamus venenatis velit nec
+                neque ultricies, eget elementum magna tristique. Quisque
+                vehicula, risus eget aliquam placerat, purus leo tincidunt eros,
+                eget luctus quam orci in velit. Praesent scelerisque tortor sed
+                accumsan convallis.
+              </p>
+            </div>
+            <div className="column right">
+              <h2>Side</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas sit amet pretium urna. Vivamus venenatis velit nec
+                neque ultricies, eget elementum magna tristique. Quisque
+                vehicula, risus eget aliquam placerat, purus leo tincidunt eros,
+                eget luctus quam orci in velit. Praesent scelerisque tortor sed
+                accumsan convallis.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <Spinner message={"Please accept location request"} />;
+    }
+  }
+
+  render() {
+    console.log("this.state.dataRecieved");
+    console.log(this.state.dataRecieved);
+    return <div>{this.renderContent()}</div>;
   }
 }
