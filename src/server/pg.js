@@ -9,7 +9,7 @@ function doRequest() {
     var result = [];
     const options = {
       host: 'api.pubg.com',
-      path: `/shards/steam/leaderboards/duo`,
+      path: `/shards/steam/leaderboards/solo`,
       method: 'GET',
       headers: {
           "Accept": "application/vnd.api+json",
@@ -44,67 +44,65 @@ function doRequest() {
 async function main() {
 
 
-    let res = await doRequest();   //From first page
-    //let res1 = await doRequest(1);  //From second page
-    //res = res.concat(res1);         //Concat both data
-    //res = res.filter(function(elem){    //Remove last 4 so that top ten left
-        //return ( parseFloat(elem.rank)< 11)
-    //})       
+  let res = await doRequest();       
 
-    console.log("RESULT really IS:");
-    console.log(res);
+  // console.log("RESULT really IS:");
+  // console.log(res);
 
-    client.query(`SELECT COUNT(*) FROM users;`, (err, data) => {
-        if (parseFloat(data.rows[0].count) == 0) {
-            
-        res.map((elem) => {
+  client.query(
+    `DELETE from users WHERE rank>0;`,
+    (err, data) => {
+      console.log("Data removed from table");
+      if (err) return console.error(err);
+    }
+  );
 
-        var name = elem.name;
-    
-        var rank = elem.rank;
-        rank = parseFloat(rank);
-    
-        var rankPoints = elem.stats.rankPoints;
-        rankPoints = parseFloat(rankPoints);
-    
-        var wins = elem.stats.wins;
-        wins = parseFloat(wins);
-    
-        var games = elem.stats.games;
-        games = parseFloat(games);
-    
-        var winRatio = elem.stats.winRatio;
-        winRatio = parseFloat(winRatio);
-    
-        var averageDamage = elem.stats.averageDamage;
-        averageDamage = parseFloat(averageDamage);
-    
-        var kills = elem.stats.kills;
-        kills = parseFloat(kills);
-    
-        var killDeathRatio = elem.stats.killDeathRatio;
-        killDeathRatio = parseFloat(killDeathRatio);
-    
-        var averageRank = elem.stats.averageRank;
-        averageRank = parseFloat(averageRank);
-        
-        
-        client.query(
-          `INSERT INTO users (name ,  rank , rankPoints , wins , games, winRatio, averageDamage, kills , killDeathRatio , averageRank) VALUES ('${name}' ,  '${rank}' , '${rankPoints}' , '${wins}' , '${games}', '${winRatio}', '${averageDamage}', '${kills}' , '${killDeathRatio}' , '${averageRank}');`,
-          (err, data) => {
-            if (err) return console.error(err);
-          }
-        );
-        })
-        client.query("SELECT * from users", (err, data) => {
-            data.rows.forEach(rowObject => {
-            console.log(rowObject);
-            });
-        }); 
-    } else {
-            console.log("Filled Table");
+          
+  res.map((elem) => {
+
+      var name = elem.name;
+  
+      var rank = elem.rank;
+      rank = parseFloat(rank);
+  
+      var rankPoints = elem.stats.rankPoints;
+      rankPoints = parseFloat(rankPoints);
+  
+      var wins = elem.stats.wins;
+      wins = parseFloat(wins);
+  
+      var games = elem.stats.games;
+      games = parseFloat(games);
+  
+      var winRatio = elem.stats.winRatio;
+      winRatio = parseFloat(winRatio);
+  
+      var averageDamage = elem.stats.averageDamage;
+      averageDamage = parseFloat(averageDamage);
+  
+      var kills = elem.stats.kills;
+      kills = parseFloat(kills);
+  
+      var killDeathRatio = elem.stats.killDeathRatio;
+      killDeathRatio = parseFloat(killDeathRatio);
+  
+      var averageRank = elem.stats.averageRank;
+      averageRank = parseFloat(averageRank);        
+      
+      client.query(
+        `INSERT INTO users (name ,  rank , rankPoints , wins , games, winRatio, averageDamage, kills , killDeathRatio , averageRank) VALUES ('${name}' ,  '${rank}' , '${rankPoints}' , '${wins}' , '${games}', '${winRatio}', '${averageDamage}', '${kills}' , '${killDeathRatio}' , '${averageRank}');`,
+        (err, data) => {
+          if (err) return console.error(err);
         }
-    }); 
+      );
+    })
+      client.query("SELECT * from users", (err, data) => {
+        console.log("afterInsertion");
+          data.rows.forEach(rowObject => {
+          console.log(rowObject);
+      });
+  }); 
+
 }
   
 
