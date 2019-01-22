@@ -5,12 +5,12 @@ module.exports = router;
 
 const https = require('https');
 
-function doRequest() {
+function doRequest(mode) {
   return new Promise(function (resolve, reject) {
     var result = [];
     const options = {
       host: 'api.pubg.com',
-      path: `/shards/steam/leaderboards/solo`,
+      path: `/shards/steam/leaderboards/${mode}`,
       method: 'GET',
       headers: {
           "Accept": "application/vnd.api+json",
@@ -42,10 +42,10 @@ function doRequest() {
 
 
 
-async function main() {
+async function main(mode = "solo") {
 
 
-    let res = await doRequest();       
+    let res = await doRequest(mode);       
 
     // console.log("RESULT really IS:");
     // console.log(res);
@@ -99,9 +99,10 @@ async function main() {
       })
         client.query("SELECT * from users", (err, data) => {
           console.log("afterInsertion");
-            data.rows.forEach(rowObject => {
-            console.log(rowObject);
-        });
+          console.log(data.rows.length);
+        //     data.rows.forEach(rowObject => {
+        //     console.log(rowObject);
+        // });
     }); 
 
 
@@ -117,36 +118,62 @@ async function main() {
 
 
 
+router.get("/:mode", async (req, res) => {
+  // use our client to get all of our hats from our database 
+  // by creating raw sql query to be passed to query method
+  let { mode } = req.params;
+
+  await  main(mode);
+  console.log("Mode is");
+  console.log(mode);
+  client.query("SELECT * from users ORDER BY rank ASC;", (err, data) => {
+    // log any errors that you encounter
+    if (err) return console.error(err);
+    // map over the array of returned rows and log them into your console
+    console.log("All objects in Mode in the table");
+    console.log(data.rows.length);
+    // data.rows.forEach(rowObject => {      
+    //   console.log(rowObject);
+    // });
+  // send back via http response body the data
+    res.send(data.rows);
+  });
+  return;
+});
 
 
 
 
 
 
-
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     // use our client to get all of our hats from our database 
     // by creating raw sql query to be passed to query method
-  main();
+    console.log("HelloWorld");
+  await main("solo");
   client.query("SELECT * from users ORDER BY rank ASC;", (err, data) => {
       // log any errors that you encounter
     if (err) return console.error(err);
     // map over the array of returned rows and log them into your console
-    console.log("All objects in the table");
-    data.rows.forEach(rowObject => {      
-      console.log(rowObject);
-    });
+    console.log("Number of objects in slash in the table");
+    console.log(data.rows.length);
+    // data.rows.forEach(rowObject => {      
+    //   console.log(rowObject);
+    // });
     // send back via http response body the data
     res.send(data.rows);
   });
   return;
 });
 
-router.get("/:userName", (req, res) => {
-  let { userName } = req.params;
-  client.query(`SELECT * from users WHERE name = '${userName}'`, (err, data) => {
-    console.log(data.rows);
-    res.send(data.rows);
-  });
-  return;
-});
+
+
+
+// router.get("/:userName", (req, res) => {
+//   let { userName } = req.params;
+//   client.query(`SELECT * from users WHERE name = '${userName}'`, (err, data) => {
+//     console.log(data.rows);
+//     res.send(data.rows);
+//   });
+//   return;
+// });

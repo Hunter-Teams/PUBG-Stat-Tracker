@@ -1,6 +1,5 @@
 import React from "react";
 import "../index.css";
-import PropTypes from "prop-types";
 import Leaderboard from "./leaderboard";
 import Spinner from "./Spinner";
 import axios from 'axios';
@@ -14,10 +13,72 @@ export default class Content extends React.Component {
       isActive: false,
       table: [],
       dataRecieved: false,
+      currentMode: "solo",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
+  tryModeSolo = (e) => {
+      this.setState({
+        dataRecieved: false,
+      });
+    e.preventDefault();
+    let mode = "solo";
+    axios.get(`http://localhost:3001/api/${mode}`)
+    .then(response => {
+      //console.log(response.data);
+      var newArr = [];
+      response.data.forEach(elem => {
+        //console.log(elem);
+        newArr.push(elem);
+      })
+      //console.log(newArr);
+      this.setState({
+        table: newArr,
+        dataRecieved: true,
+        currenyMode: mode,
+      });
+      console.log("this.state.currenyMode content")
+      console.log(this.state.currenyMode);
+      this.forceUpdate();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  tryModeDuo = (e) => {
+    this.setState({
+      dataRecieved: false,
+    });
+    e.preventDefault();
+    let mode = "duo";
+    console.log("tryModeDuo");
+    axios.get(`http://localhost:3001/api/${mode}`)
+    .then(response => {
+      console.log("response.data");
+      console.log(response.data);
+      var newArr = [];
+      response.data.forEach(elem => {
+        //console.log(elem);
+        newArr.push(elem);
+      })
+      //console.log(newArr);
+      this.setState({
+        table: newArr,
+        dataRecieved: true,
+        currenyMode: mode,
+      });
+      console.log("this.state.currenyMode content")
+      console.log(this.state.currenyMode);
+      this.forceUpdate();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+  
   handleSubmit() {
     axios.get(`http://localhost:3001/api`)
       .then(response => {
@@ -60,7 +121,9 @@ export default class Content extends React.Component {
             <div className="column left" />
   
             <div className="column middle">
-              <h1 className="tableTitle">Leaderboard: Solo</h1>
+              <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
+              <button onClick={this.tryModeSolo}>Solo</button>
+              <button onClick={this.tryModeDuo}>Duo</button>
               <Leaderboard table = {this.state.table}  />
               <p className="tableFoot">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
@@ -84,7 +147,7 @@ export default class Content extends React.Component {
         </div>
       );
     } else {
-      return <Spinner message={"Please accept location request"} />;
+      return <Spinner message={"Please wait.."} />;
     }
   }
 
