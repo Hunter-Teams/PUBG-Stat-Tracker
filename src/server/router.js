@@ -10,7 +10,7 @@ function doRequest(mode) {
     var result = [];
     const options = {
       host: 'api.pubg.com',
-      path: `/shards/steam/leaderboards/${mode}`,
+      path: `/shards/steam/${mode}`,
       method: 'GET',
       headers: {
           "Accept": "application/vnd.api+json",
@@ -42,7 +42,7 @@ function doRequest(mode) {
 
 
 
-async function main(mode = "solo") {
+async function main(mode = "leaderboards/solo") {
 
 
     let res = await doRequest(mode);       
@@ -122,7 +122,7 @@ router.get("/:mode", async (req, res) => {
   // use our client to get all of our hats from our database 
   // by creating raw sql query to be passed to query method
   let { mode } = req.params;
-
+  mode = "leaderboards/"+mode;
   await  main(mode);
   console.log("Mode is");
   console.log(mode);
@@ -149,8 +149,8 @@ router.get("/:mode", async (req, res) => {
 router.get("/", async (req, res) => {
     // use our client to get all of our hats from our database 
     // by creating raw sql query to be passed to query method
-    console.log("HelloWorld");
-  await main("solo");
+  console.log("HelloWorld");
+  await main("leaderboards/solo");
   client.query("SELECT * from users ORDER BY rank ASC;", (err, data) => {
       // log any errors that you encounter
     if (err) return console.error(err);
