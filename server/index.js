@@ -1,11 +1,11 @@
 
 const express = require("express");
 var app = express();
-const pino = require("express-pino-logger")();
+// const pino = require("express-pino-logger")();
 const bodyParser = require("body-parser");
 const path = require("path");
 
-app.use(pino);
+// app.use(pino);
 // create the path to our static assets
 app.use(express.static(path.join(__dirname, "..", "build")));
 
