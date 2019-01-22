@@ -17,6 +17,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "engines": {
+    "node": "10.15.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
