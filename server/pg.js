@@ -1,3 +1,20 @@
+Skip to content
+
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @shanisaar Sign out
+1
+0 0 CUNY2X-Project/PUBG-Stat-Tracker
+ Code  Issues 11  Pull requests 1  Projects 0  Wiki  Insights  Settings
+PUBG-Stat-Tracker/src/server/pg.js
+ed9754e  2 hours ago
+@LiudmilaZyrianova LiudmilaZyrianova when page reloads, the data from db removes
+
+111 lines (81 sloc)  2.88 KB
 const router = require("express").Router();
 const client = require('./client');
 module.exports = router;
@@ -29,7 +46,7 @@ function doRequest() {
     var newObj = JSON.parse(data).included;
     newObj.map((elem)=>{
       result.push(elem.attributes);
-    }); 
+    });
     resolve(result)
   });
 
@@ -44,7 +61,7 @@ function doRequest() {
 async function main() {
 
 
-  let res = await doRequest();       
+  let res = await doRequest();
 
   // console.log("RESULT really IS:");
   // console.log(res);
@@ -57,38 +74,38 @@ async function main() {
     }
   );
 
-          
+
   res.map((elem) => {
 
       var name = elem.name;
-  
+
       var rank = elem.rank;
       rank = parseFloat(rank);
-  
+
       var rankPoints = elem.stats.rankPoints;
       rankPoints = parseFloat(rankPoints);
-  
+
       var wins = elem.stats.wins;
       wins = parseFloat(wins);
-  
+
       var games = elem.stats.games;
       games = parseFloat(games);
-  
+
       var winRatio = elem.stats.winRatio;
       winRatio = parseFloat(winRatio);
-  
+
       var averageDamage = elem.stats.averageDamage;
       averageDamage = parseFloat(averageDamage);
-  
+
       var kills = elem.stats.kills;
       kills = parseFloat(kills);
-  
+
       var killDeathRatio = elem.stats.killDeathRatio;
       killDeathRatio = parseFloat(killDeathRatio);
-  
+
       var averageRank = elem.stats.averageRank;
-      averageRank = parseFloat(averageRank);        
-      
+      averageRank = parseFloat(averageRank);
+
       client.query(
         `INSERT INTO users (name ,  rank , rankPoints , wins , games, winRatio, averageDamage, kills , killDeathRatio , averageRank) VALUES ('${name}' ,  '${rank}' , '${rankPoints}' , '${wins}' , '${games}', '${winRatio}', '${averageDamage}', '${kills}' , '${killDeathRatio}' , '${averageRank}');`,
         (err, data) => {
@@ -101,10 +118,9 @@ async function main() {
           data.rows.forEach(rowObject => {
           console.log(rowObject);
       });
-  }); 
+  });
 
 }
-  
+
 
 main();
-
