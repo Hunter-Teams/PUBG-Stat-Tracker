@@ -9,7 +9,7 @@ function doRequest() {
     var result = [];
     const options = {
       host: "api.pubg.com",
-      path: "/shards/steam/leaderboards/solo?page[number]=0",
+      path: `/shards/steam/leaderboards/solo`,
       method: "GET",
       headers: {
         Accept: "application/vnd.api+json",
@@ -43,56 +43,57 @@ function doRequest() {
 
 async function main() {
   let res = await doRequest();
-  console.log("RESULT really IS:");
-  console.log(res);
 
-  client.query(`SELECT COUNT(*) FROM users;`, (err, data) => {
-    if (parseFloat(data.rows[0].count) == 0) {
-      res.map(elem => {
-        var name = elem.name;
+  // console.log("RESULT really IS:");
+  // console.log(res);
 
-        var rank = elem.rank;
-        rank = parseFloat(rank);
+  client.query(`DELETE from users WHERE rank>0;`, (err, data) => {
+    console.log("Data removed from table");
+    if (err) return console.error(err);
+  });
 
-        var rankPoints = elem.stats.rankPoints;
-        rankPoints = parseFloat(rankPoints);
+  res.map(elem => {
+    var name = elem.name;
 
-        var wins = elem.stats.wins;
-        wins = parseFloat(wins);
+    var rank = elem.rank;
+    rank = parseFloat(rank);
 
-        var games = elem.stats.games;
-        games = parseFloat(games);
+    var rankPoints = elem.stats.rankPoints;
+    rankPoints = parseFloat(rankPoints);
 
-        var winRatio = elem.stats.winRatio;
-        winRatio = parseFloat(winRatio);
+    var wins = elem.stats.wins;
+    wins = parseFloat(wins);
 
-        var averageDamage = elem.stats.averageDamage;
-        averageDamage = parseFloat(averageDamage);
+    var games = elem.stats.games;
+    games = parseFloat(games);
 
-        var kills = elem.stats.kills;
-        kills = parseFloat(kills);
+    var winRatio = elem.stats.winRatio;
+    winRatio = parseFloat(winRatio);
 
-        var killDeathRatio = elem.stats.killDeathRatio;
-        killDeathRatio = parseFloat(killDeathRatio);
+    var averageDamage = elem.stats.averageDamage;
+    averageDamage = parseFloat(averageDamage);
 
-        var averageRank = elem.stats.averageRank;
-        averageRank = parseFloat(averageRank);
+    var kills = elem.stats.kills;
+    kills = parseFloat(kills);
 
-        client.query(
-          `INSERT INTO users (name ,  rank , rankPoints , wins , games, winRatio, averageDamage, kills , killDeathRatio , averageRank) VALUES ('${name}' ,  '${rank}' , '${rankPoints}' , '${wins}' , '${games}', '${winRatio}', '${averageDamage}', '${kills}' , '${killDeathRatio}' , '${averageRank}');`,
-          (err, data) => {
-            if (err) return console.error(err);
-          }
-        );
-      });
-      client.query("SELECT * from users", (err, data) => {
-        data.rows.forEach(rowObject => {
-          console.log(rowObject);
-        });
-      });
-    } else {
-      console.log("Filled Table");
-    }
+    var killDeathRatio = elem.stats.killDeathRatio;
+    killDeathRatio = parseFloat(killDeathRatio);
+
+    var averageRank = elem.stats.averageRank;
+    averageRank = parseFloat(averageRank);
+
+    client.query(
+      `INSERT INTO users (name ,  rank , rankPoints , wins , games, winRatio, averageDamage, kills , killDeathRatio , averageRank) VALUES ('${name}' ,  '${rank}' , '${rankPoints}' , '${wins}' , '${games}', '${winRatio}', '${averageDamage}', '${kills}' , '${killDeathRatio}' , '${averageRank}');`,
+      (err, data) => {
+        if (err) return console.error(err);
+      }
+    );
+  });
+  client.query("SELECT * from users", (err, data) => {
+    console.log("afterInsertion");
+    data.rows.forEach(rowObject => {
+      console.log(rowObject);
+    });
   });
 }
 
