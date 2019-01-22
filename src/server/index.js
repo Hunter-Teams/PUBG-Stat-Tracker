@@ -1,21 +1,32 @@
-const express = require("express");
+const router = require("express").Router();
+const client = require("./client");
+module.exports = router;
 
-var app = express();
-const pino = require("express-pino-logger")();
-
-const bodyParser = require("body-parser");
-app.use(pino);
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
+router.get("/", (req, res) => {
+  // use our client to get all of our hats from our database
+  // by creating raw sql query to be passed to query method
+  client.query("SELECT * from users", (err, data) => {
+    // log any errors that you encounter
+    if (err) return console.error(err);
+    // map over the array of returned rows and log them into your console
+    console.log("All objects in the table");
+    data.rows.forEach(rowObject => {
+      console.log(rowObject);
+    });
+    // send back via http response body the data
+    res.send(data.rows);
+  });
+  return;
 });
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
-app.use("/api", require("./router"));
-
-app.listen(3001, () => `listening on 3001`);
+router.get("/:userName", (req, res) => {
+  let { userName } = req.params;
+  client.query(
+    `SELECT * from users WHERE name = '${userName}'`,
+    (err, data) => {
+      console.log(data.rows);
+      res.send(data.rows);
+    }
+  );
+  return;
+});
