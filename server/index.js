@@ -23,8 +23,8 @@ app.use(bodyParser.json());
 
 app.use("/api", require("./api/router"));
 app.use("*", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "..", "build/index.html"));
-})
+  res.send("Hello World");
+});
 
 // specifying a port so production environment would work
 let port = process.env.PORT || 8000;
