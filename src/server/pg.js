@@ -1,3 +1,4 @@
+/*
 const router = require("express").Router();
 const client = require("./client");
 module.exports = router;
@@ -98,3 +99,4 @@ async function main() {
 }
 
 main();
+*/

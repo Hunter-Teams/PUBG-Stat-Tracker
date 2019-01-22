@@ -100,6 +100,7 @@ async function main() {
 router.get("/", (req, res) => {
   // use our client to get all of our hats from our database
   // by creating raw sql query to be passed to query method
+  console.log("howdy world");
   main();
   client.query("SELECT * from users ORDER BY rank ASC;", (err, data) => {
     // log any errors that you encounter

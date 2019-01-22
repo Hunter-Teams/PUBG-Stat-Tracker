@@ -43,27 +43,28 @@ export default class NavBarClass extends React.Component {
             </a>
           </li>
           <li>
-            <div className="flex-container3">
-              <Link className="linkText" to="/search">
-                Search
-              </Link>
-            </div>
+            <Link className="linkText" to="/search">
+              <div className="flex-container3">
+                <div className="search" />
+              </div>
+            </Link>
           </li>
 
           <li>
-            <div className="flex-container3">
-              <Link className="linkText" to="/about">
-                About
-              </Link>
-            </div>
+            {" "}
+            <Link className="linkText" to="/about">
+              <div className="flex-container3">
+                <div className="about" />
+              </div>
+            </Link>
           </li>
 
           <li>
-            <div className="flex-container3">
-              <Link className="linkText" to="/">
-                TopTen
-              </Link>
-            </div>
+            <Link className="linkText" to="/">
+              <div className="flex-container3">
+                <div className="topTen" />
+              </div>{" "}
+            </Link>
           </li>
         </ul>
       </div>
