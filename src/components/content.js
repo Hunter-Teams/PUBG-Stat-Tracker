@@ -16,15 +16,14 @@ export default class Content extends React.Component {
       currentMode: "solo",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setMode= this.setMode.bind(this);
 
   }
 
-  tryModeSolo = (e) => {
-      this.setState({
-        dataRecieved: false,
-      });
-    e.preventDefault();
-    let mode = "solo";
+  setMode(mode){ 
+    this.setState({
+      dataRecieved: false,
+    });   
     axios.get(`http://localhost:3001/api/${mode}`)
     .then(response => {
       //console.log(response.data);
@@ -37,7 +36,7 @@ export default class Content extends React.Component {
       this.setState({
         table: newArr,
         dataRecieved: true,
-        currenyMode: mode,
+        currentMode: mode,
       });
       console.log("this.state.currenyMode content")
       console.log(this.state.currenyMode);
@@ -48,35 +47,19 @@ export default class Content extends React.Component {
     });
   }
 
-  tryModeDuo = (e) => {
-    this.setState({
-      dataRecieved: false,
-    });
+  tryModeSolo = (e) => {
     e.preventDefault();
-    let mode = "duo";
-    console.log("tryModeDuo");
-    axios.get(`http://localhost:3001/api/${mode}`)
-    .then(response => {
-      console.log("response.data");
-      console.log(response.data);
-      var newArr = [];
-      response.data.forEach(elem => {
-        //console.log(elem);
-        newArr.push(elem);
-      })
-      //console.log(newArr);
-      this.setState({
-        table: newArr,
-        dataRecieved: true,
-        currenyMode: mode,
-      });
-      console.log("this.state.currenyMode content")
-      console.log(this.state.currenyMode);
-      this.forceUpdate();
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    this.setMode("solo");
+  }
+
+  tryModeDuo = (e) => {
+    e.preventDefault();
+    this.setMode("duo");
+  }
+
+  tryModeSquad = (e) => {
+    e.preventDefault();
+    this.setMode("squad");
   }
   
   handleSubmit() {
@@ -124,23 +107,16 @@ export default class Content extends React.Component {
               <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
               <button onClick={this.tryModeSolo}>Solo</button>
               <button onClick={this.tryModeDuo}>Duo</button>
+              <button onClick={this.tryModeSquad}>Squad</button>
               <Leaderboard table = {this.state.table}  />
               <p className="tableFoot">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-                sit amet pretium urna. Vivamus venenatis velit nec neque
-                ultricies, eget elementum magna tristique. Quisque vehicula, risus
-                eget aliquam placerat, purus leo tincidunt eros, eget luctus quam
-                orci in velit. Praesent scelerisque tortor sed accumsan convallis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </div>
             <div className="column right">
               <h2>Side</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-                sit amet pretium urna. Vivamus venenatis velit nec neque
-                ultricies, eget elementum magna tristique. Quisque vehicula, risus
-                eget aliquam placerat, purus leo tincidunt eros, eget luctus quam
-                orci in velit. Praesent scelerisque tortor sed accumsan convallis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               </p>
             </div>
           </div>
