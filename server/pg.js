@@ -1,20 +1,4 @@
-Skip to content
 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @shanisaar Sign out
-1
-0 0 CUNY2X-Project/PUBG-Stat-Tracker
- Code  Issues 11  Pull requests 1  Projects 0  Wiki  Insights  Settings
-PUBG-Stat-Tracker/src/server/pg.js
-ed9754e  2 hours ago
-@LiudmilaZyrianova LiudmilaZyrianova when page reloads, the data from db removes
-
-111 lines (81 sloc)  2.88 KB
 const router = require("express").Router();
 const client = require('./client');
 module.exports = router;

@@ -1,5 +1,5 @@
  const router = require("express").Router();
-const client = require("./client");
+const client = require("../client");
 module.exports = router;
 
 router.get("/", (req, res) => {
