@@ -1,10 +1,9 @@
 const express = require("express");
 
-var app = express();
-const pino = require("express-pino-logger")();
+app = express();
 
 const bodyParser = require("body-parser");
-app.use(pino);
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -16,7 +15,6 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(require("./pg"));
-app.use("/api", require("./router"));
+app.use("/api", require("./index"));
 
-app.listen(3001, () => `listening on 3001`);
+app.listen(3000, () => `listening on 3000`);

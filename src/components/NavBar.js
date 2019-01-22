@@ -1,5 +1,6 @@
 import React from "react";
 import "../index.css";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export default class NavBarClass extends React.Component {
@@ -42,27 +43,27 @@ export default class NavBarClass extends React.Component {
             </a>
           </li>
           <li>
-            <a href="/public/index.html">
-              <div className="flex-container3">
-                <div className="search" />
-              </div>
-            </a>
+            <div className="flex-container3">
+              <Link className="linkText" to="/search">
+                Search
+              </Link>
+            </div>
           </li>
 
           <li>
-            <a href="/public/index.html">
-              <div className="flex-container3">
-                <div className="about" />
-              </div>
-            </a>
+            <div className="flex-container3">
+              <Link className="linkText" to="/about">
+                About
+              </Link>
+            </div>
           </li>
 
           <li>
-            <a className="active" href="/public/index.html">
-              <div className="flex-container3">
-                <div className="topTen" />
-              </div>
-            </a>
+            <div className="flex-container3">
+              <Link className="linkText" to="/">
+                TopTen
+              </Link>
+            </div>
           </li>
         </ul>
       </div>
