@@ -6,7 +6,7 @@ class Advertising extends Component {
   render() {
     return (
       <div>
-        <div className="flex-container"></div>
+        <div className="flex-container" />
         <a href="https://www.cyberpowerpc.com/page/Intel/Esports/?utm_source=asc&utm_medium=display&utm_campaign=asc-display-retargeting&gclid=EAIaIQobChMIgqP90tX_3wIVEMfACh1imA1ZEAEYASAAEgKoGPD_BwE">
           <div className="advert" />
         </a>
