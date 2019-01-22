@@ -119,23 +119,15 @@ async function main(mode = "leaderboards/solo") {
 
 
 router.get("/:mode", async (req, res) => {
-  // use our client to get all of our hats from our database 
-  // by creating raw sql query to be passed to query method
   let { mode } = req.params;
   mode = "leaderboards/"+mode;
   await  main(mode);
   console.log("Mode is");
   console.log(mode);
   client.query("SELECT * from users ORDER BY rank ASC;", (err, data) => {
-    // log any errors that you encounter
     if (err) return console.error(err);
-    // map over the array of returned rows and log them into your console
     console.log("All objects in Mode in the table");
     console.log(data.rows.length);
-    // data.rows.forEach(rowObject => {      
-    //   console.log(rowObject);
-    // });
-  // send back via http response body the data
     res.send(data.rows);
   });
   return;
@@ -168,11 +160,24 @@ router.get("/", async (req, res) => {
 
 
 
+//https://api.pubg.com/shards/steam/players/account.4bd0eb35011e48349e3509dacd729718/seasons/lifetime
 
-// router.get("/:userName", (req, res) => {
-//   let { userName } = req.params;
-//   client.query(`SELECT * from users WHERE name = '${userName}'`, (err, data) => {
-//     console.log(data.rows);
+// router.get("/:userName", async (req, res) => {
+//   let { mode } = req.params;
+//   mode = "leaderboards/"+mode;
+//   await  main(mode);
+//   console.log("Mode is");
+//   console.log(mode);
+//   client.query("SELECT * from users ORDER BY rank ASC;", (err, data) => {
+//     // log any errors that you encounter
+//     if (err) return console.error(err);
+//     // map over the array of returned rows and log them into your console
+//     console.log("All objects in Mode in the table");
+//     console.log(data.rows.length);
+//     // data.rows.forEach(rowObject => {      
+//     //   console.log(rowObject);
+//     // });
+//   // send back via http response body the data
 //     res.send(data.rows);
 //   });
 //   return;

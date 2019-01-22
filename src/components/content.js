@@ -17,6 +17,7 @@ export default class Content extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setMode= this.setMode.bind(this);
+    this.sortBy= this.sortBy.bind(this);
 
   }
 
@@ -60,6 +61,49 @@ export default class Content extends React.Component {
   tryModeSquad = (e) => {
     e.preventDefault();
     this.setMode("squad");
+  }
+
+
+  sortBy = (field, order)=>{
+    var reverse = 0;
+    if (order === "DESC") {
+      reverse = 1
+    }
+    if (order === "ASC") {
+      reverse = -1
+    }
+    return function (a, b) {
+      if (a[field] < b[field]){
+        return reverse;
+      } else {
+        return -reverse;
+      }
+        
+    } 
+  
+   }
+   
+   
+  sortForAll = (column, dir) => {
+    let newArr = this.state.table;
+    newArr=newArr.sort(this.sortBy(column, dir));
+    //console.log(newArr);
+    this.setState({
+      table: newArr,
+    });
+    //console.log(newArr);
+    this.forceUpdate();
+  }
+
+
+  SortKDDesc = (e) => {
+    e.preventDefault();
+    this.sortForAll("killdeathratio", "DESC");
+  }
+
+  SortKDAsc = (e) => {
+    e.preventDefault();
+    this.sortForAll("killdeathratio", "ASC");
   }
   
   handleSubmit() {
@@ -108,6 +152,8 @@ export default class Content extends React.Component {
               <button onClick={this.tryModeSolo}>Solo</button>
               <button onClick={this.tryModeDuo}>Duo</button>
               <button onClick={this.tryModeSquad}>Squad</button>
+              <button onClick={this.SortKDDesc}>Sort by K/D Desc</button>
+              <button onClick={this.SortKDAsc}>Sort by K/D Asc</button>
               <Leaderboard table = {this.state.table}  />
               <p className="tableFoot">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
