@@ -12,7 +12,7 @@
     "eject": "react-scripts eject",
     "server": "node src/server --exec nodemon | pino-colada",
     "dev": "run-p server start",
-    "start-server": "node src/server/index.js"
+    "start-server": "node src/server/index.js & react-scripts start"
   },
   "proxy": "http://localhost:3001/api",
   "eslintConfig": {
