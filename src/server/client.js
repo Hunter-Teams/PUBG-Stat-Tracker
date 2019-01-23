@@ -25,14 +25,17 @@ const client = new Client({
   ssl: true
 });
 
-client.connect();
-
-client.query('SELECT * from users', (err, res) => {
-  if (err) throw err;
-  // for (let row of res.rows) {
+client.connect()
+.then(() => {
+  client.query('SELECT * from users', (err, res) => {
+    if (err) throw err;
+}).then(() => {
+  client.end();
+})
+// for (let row of res.rows) {
   //   console.log(JSON.stringify(row));
   // }
-  // client.end();
+
 });
 
 // export the client to use elsewhere in your express app for working with queries.
