@@ -21,6 +21,7 @@ class Search extends Component {
 
   handleChangeSearch = (event) => {
     event.preventDefault();
+    console.log("Entering playerName");
     this.setState({
         playerName: event.target.value
     })
@@ -31,19 +32,24 @@ class Search extends Component {
     this.setState({
       status: "playerEntered",
     }); 
-    axios.get(`https://api.pubg.com/shards/steam/players/${this.state.playerName}`)
+    console.log("before axios");
+    const configs = {
+      headers: {
+          "Accept": "application/vnd.api+json",
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmNjFhM2QwMC1mZDg3LTAxMzYtYWE0MS0wM2RjN2YxZjgyYzkiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTQ3ODQwOTEzLCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6Im1jZG9semxuIn0.5aLHkXHd_glPo9RJ02SJARMGjPbEnaz3wWekwMrz4ZE"
+      }
+    };
+    axios.get(`https://api.pubg.com/shards/steam/players?filter[playerNames]=${this.state.playerName}`, configs)
     .then(response => {
-      console.log(response.data);
-      var playerID = response.data.id;
-      console.log(playerID);
+      var playerID = response.data.data[0].id;
       this.setState({
         status: "playerEntered",
         playerID: playerID,
       });
-      axios.get(`https://api.pubg.com/shards/steam/players/${this.state.playerID}/seasons/lifetime`)
+      axios.get(`https://api.pubg.com/shards/steam/players/${this.state.playerID}/seasons/lifetime`, configs)
       .then(response => {
-        console.log(response.data);
-        var playerData = response.data;
+        console.log(response.data.data.attributes.gameModeStats);
+        var playerData = response.data.data.attributes.gameModeStats;
         this.setState({
           status: "playerReady",
           playerData: playerData,
@@ -96,7 +102,7 @@ class Search extends Component {
               <h1 className="tableTitle">Serach fro player name: </h1>
               <button className = "button" onClick={this.handleClickSearch}>Search</button>
               <input type='text' placeholder="Type name of the player" onChange={this.handleChangeSearch}/>
-              <p className="tableFoot">
+              <p >
               <div>{this.renderContent()}</div>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
