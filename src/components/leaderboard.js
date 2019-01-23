@@ -32,11 +32,9 @@ class Leaderboard extends Component {
   sortForAll = (column, dir) => {
     let newArr = this.state.table;
     newArr=newArr.sort(this.sortBy(column, dir));
-    //console.log(newArr);
     this.setState({
       table: newArr,
     });
-    //console.log(newArr);
     this.forceUpdate();
   }
 
@@ -120,7 +118,7 @@ class Leaderboard extends Component {
 
 
   render() {
-    console.log("this.state.table LEaderboard");
+    console.log("this.state.table Leaderboard");
     console.log(this.state.table);
     var arr = this.state.table.map((elem)=>
     <ParticularPlayer data={elem}/>

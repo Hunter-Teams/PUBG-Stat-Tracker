@@ -17,6 +17,7 @@ function doRequest(mode) {
           "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmNjFhM2QwMC1mZDg3LTAxMzYtYWE0MS0wM2RjN2YxZjgyYzkiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTQ3ODQwOTEzLCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6Im1jZG9semxuIn0.5aLHkXHd_glPo9RJ02SJARMGjPbEnaz3wWekwMrz4ZE"
       }
     };
+
  https.get(options, (resp) => {
   let data = '';
 
@@ -160,25 +161,3 @@ router.get("/", async (req, res) => {
 
 
 
-//https://api.pubg.com/shards/steam/players/account.4bd0eb35011e48349e3509dacd729718/seasons/lifetime
-
-// router.get("/:userName", async (req, res) => {
-//   let { mode } = req.params;
-//   mode = "leaderboards/"+mode;
-//   await  main(mode);
-//   console.log("Mode is");
-//   console.log(mode);
-//   client.query("SELECT * from users ORDER BY rank ASC;", (err, data) => {
-//     // log any errors that you encounter
-//     if (err) return console.error(err);
-//     // map over the array of returned rows and log them into your console
-//     console.log("All objects in Mode in the table");
-//     console.log(data.rows.length);
-//     // data.rows.forEach(rowObject => {      
-//     //   console.log(rowObject);
-//     // });
-//   // send back via http response body the data
-//     res.send(data.rows);
-//   });
-//   return;
-// });

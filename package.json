@@ -10,7 +10,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node-env-run src/server --exec nodemon | pino-colada",
+    "server": "node src/server --exec nodemon | pino-colada",
     "dev": "run-p server start"
   },
   "proxy": "http://localhost:3001/api",
