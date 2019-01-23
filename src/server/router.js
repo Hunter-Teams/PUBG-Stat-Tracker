@@ -30,7 +30,7 @@ function doRequest(mode) {
     var newObj = JSON.parse(data).included;
     newObj.map((elem)=>{
       result.push(elem.attributes);
-    }); 
+    });
     resolve(result)
   });
 
@@ -41,11 +41,10 @@ function doRequest(mode) {
 }
 
 
-
 async function main(mode = "leaderboards/solo") {
 
 
-    let res = await doRequest(mode);       
+    let res = await doRequest(mode);
 
     // console.log("RESULT really IS:");
     // console.log(res);
@@ -58,38 +57,38 @@ async function main(mode = "leaderboards/solo") {
       }
     );
 
-            
+
     res.map((elem) => {
 
         var name = elem.name;
-    
+
         var rank = elem.rank;
         rank = parseFloat(rank);
-    
+
         var rankPoints = elem.stats.rankPoints;
         rankPoints = parseFloat(rankPoints);
-    
+
         var wins = elem.stats.wins;
         wins = parseFloat(wins);
-    
+
         var games = elem.stats.games;
         games = parseFloat(games);
-    
+
         var winRatio = elem.stats.winRatio;
         winRatio = parseFloat(winRatio);
-    
+
         var averageDamage = elem.stats.averageDamage;
         averageDamage = parseFloat(averageDamage);
-    
+
         var kills = elem.stats.kills;
         kills = parseFloat(kills);
-    
+
         var killDeathRatio = elem.stats.killDeathRatio;
         killDeathRatio = parseFloat(killDeathRatio);
-    
+
         var averageRank = elem.stats.averageRank;
-        averageRank = parseFloat(averageRank);        
-        
+        averageRank = parseFloat(averageRank);
+
         client.query(
           `INSERT INTO users (name ,  rank , rankPoints , wins , games, winRatio, averageDamage, kills , killDeathRatio , averageRank) VALUES ('${name}' ,  '${rank}' , '${rankPoints}' , '${wins}' , '${games}', '${winRatio}', '${averageDamage}', '${kills}' , '${killDeathRatio}' , '${averageRank}');`,
           (err, data) => {
@@ -103,20 +102,10 @@ async function main(mode = "leaderboards/solo") {
         //     data.rows.forEach(rowObject => {
         //     console.log(rowObject);
         // });
-    }); 
+    });
 
 
 }
-  
-
-
-
-
-
-
-
-
-
 
 router.get("/:mode", async (req, res) => {
   let { mode } = req.params;
@@ -133,13 +122,8 @@ router.get("/:mode", async (req, res) => {
   return;
 });
 
-
-
-
-
-
 router.get("/", async (req, res) => {
-    // use our client to get all of our hats from our database 
+    // use our client to get all of our hats from our database
     // by creating raw sql query to be passed to query method
   console.log("HelloWorld");
   await main("leaderboards/solo");
@@ -149,7 +133,7 @@ router.get("/", async (req, res) => {
     // map over the array of returned rows and log them into your console
     console.log("Number of objects in slash in the table");
     console.log(data.rows.length);
-    // data.rows.forEach(rowObject => {      
+    // data.rows.forEach(rowObject => {
     //   console.log(rowObject);
     // });
     // send back via http response body the data
@@ -157,8 +141,6 @@ router.get("/", async (req, res) => {
   });
   return;
 });
-
-
 
 //https://api.pubg.com/shards/steam/players/account.4bd0eb35011e48349e3509dacd729718/seasons/lifetime
 
@@ -174,7 +156,7 @@ router.get("/", async (req, res) => {
 //     // map over the array of returned rows and log them into your console
 //     console.log("All objects in Mode in the table");
 //     console.log(data.rows.length);
-//     // data.rows.forEach(rowObject => {      
+//     // data.rows.forEach(rowObject => {
 //     //   console.log(rowObject);
 //     // });
 //   // send back via http response body the data
