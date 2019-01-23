@@ -12,7 +12,7 @@
     "eject": "react-scripts eject",
     "server": "node src/server --exec nodemon | pino-colada",
     "dev": "run-p server start",
-    "start-server": "node src/server/index.js & react-scripts start"
+    "start-server": "node src/server/index.js"
   },
   "proxy": "http://localhost:3001/api",
   "eslintConfig": {
@@ -32,7 +32,9 @@
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",
-    "reactstrap": "^7.1.0"
+    "reactstrap": "^7.1.0",
+    "express-pino-logger": "^4.0.0",
+    "pino-colada": "^1.4.4"
   },
   "devDependencies": {
     "express-pino-logger": "^4.0.0",

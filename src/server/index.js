@@ -2,10 +2,10 @@ const express = require('express');
 var app = express();
 
 const path = require("path");
-// const pino = require('express-pino-logger')();
+const pino = require('express-pino-logger')();
 const bodyParser = require('body-parser');
 
-// app.use(pino);
+ app.use(pino);
 
 // create the path to our static assets
 app.use(express.static(path.join(__dirname, "..", "build")));
@@ -21,7 +21,7 @@ app.use("*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 // specifying a port so production environment would work
-let port = process.env.PORT || 3001;
+let port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
