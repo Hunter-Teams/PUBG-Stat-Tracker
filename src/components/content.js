@@ -20,11 +20,11 @@ export default class Content extends React.Component {
     this.setMode= this.setMode.bind(this);
   }
 
-  setMode(mode){ 
+  setMode(mode){
     this.setState({
       dataRecieved: false,
-    });   
-    axios.get(`http://localhost:3001/api/${mode}`)
+    });
+    axios.get(`/api/${mode}`)
     .then(response => {
       //console.log(response.data);
       var newArr = [];
@@ -61,9 +61,9 @@ export default class Content extends React.Component {
     e.preventDefault();
     this.setMode("squad");
   }
-  
+
   handleSubmit() {
-    axios.get(`http://localhost:3001/api`)
+    axios.get(`/api`)
       .then(response => {
         //console.log(response.data);
         var newArr = [];
@@ -93,7 +93,7 @@ export default class Content extends React.Component {
 
   componentDidMount() {
     this.handleSubmit();
-    
+
   }
 
   renderContent() {
@@ -102,7 +102,7 @@ export default class Content extends React.Component {
         <div>
           <div className="row">
             <div className="column left" />
-  
+
             <div className="column middle">
               <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
               <button onClick={this.tryModeSolo}>Solo</button>
