@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavBarClass from "./NavBar";
+import Advertising from "./advertising";
 
 class About extends Component {
   render() {
@@ -32,6 +33,9 @@ class About extends Component {
       </div>
         </div>
         <div className="bg" />
+        <div className="column right">
+              <Advertising />
+            </div>
       </body>
       <footer>
         <div className="flex-container5">

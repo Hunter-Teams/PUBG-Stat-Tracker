@@ -1,8 +1,8 @@
 import React from "react";
 import "../index.css";
-import PropTypes from "prop-types";
 import Leaderboard from "./leaderboard";
 import Spinner from "./Spinner";
+import Advertising from "./advertising";
 import axios from 'axios';
 
 export default class Content extends React.Component {
@@ -14,10 +14,54 @@ export default class Content extends React.Component {
       isActive: false,
       table: [],
       dataRecieved: false,
+      currentMode: "solo",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setMode= this.setMode.bind(this);
   }
 
+  setMode(mode){ 
+    this.setState({
+      dataRecieved: false,
+    });   
+    axios.get(`http://localhost:3001/api/${mode}`)
+    .then(response => {
+      //console.log(response.data);
+      var newArr = [];
+      response.data.forEach(elem => {
+        //console.log(elem);
+        newArr.push(elem);
+      })
+      //console.log(newArr);
+      this.setState({
+        table: newArr,
+        dataRecieved: true,
+        currentMode: mode,
+      });
+      console.log("this.state.currenyMode content")
+      console.log(this.state.currenyMode);
+      this.forceUpdate();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  tryModeSolo = (e) => {
+    e.preventDefault();
+    this.setMode("solo");
+  }
+
+  tryModeDuo = (e) => {
+    e.preventDefault();
+    this.setMode("duo");
+  }
+
+  tryModeSquad = (e) => {
+    e.preventDefault();
+    this.setMode("squad");
+  }
+  
   handleSubmit() {
     axios.get(`http://localhost:3001/api`)
       .then(response => {
@@ -60,31 +104,24 @@ export default class Content extends React.Component {
             <div className="column left" />
   
             <div className="column middle">
-              <h1 className="tableTitle">Leaderboard: Solo</h1>
+              <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
+              <button onClick={this.tryModeSolo}>Solo</button>
+              <button onClick={this.tryModeDuo}>Duo</button>
+              <button onClick={this.tryModeSquad}>Squad</button>
+
               <Leaderboard table = {this.state.table}  />
               <p className="tableFoot">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-                sit amet pretium urna. Vivamus venenatis velit nec neque
-                ultricies, eget elementum magna tristique. Quisque vehicula, risus
-                eget aliquam placerat, purus leo tincidunt eros, eget luctus quam
-                orci in velit. Praesent scelerisque tortor sed accumsan convallis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </div>
             <div className="column right">
-              <h2>Side</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-                sit amet pretium urna. Vivamus venenatis velit nec neque
-                ultricies, eget elementum magna tristique. Quisque vehicula, risus
-                eget aliquam placerat, purus leo tincidunt eros, eget luctus quam
-                orci in velit. Praesent scelerisque tortor sed accumsan convallis.
-              </p>
+              <Advertising />
             </div>
           </div>
         </div>
       );
     } else {
-      return <Spinner message={"Please accept location request"} />;
+      return <Spinner message={"Please wait.."} />;
     }
   }
 
