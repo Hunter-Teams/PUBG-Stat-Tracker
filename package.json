@@ -14,7 +14,7 @@
     "dev": "run-p server start",
     "start-server": "node src/server/index.js"
   },
-  "proxy": "http://localhost:3001/api",
+
   "eslintConfig": {
     "extends": "react-app"
   },
