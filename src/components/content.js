@@ -2,6 +2,7 @@ import React from "react";
 import "../index.css";
 import Leaderboard from "./leaderboard";
 import Spinner from "./Spinner";
+import Advertising from "./advertising";
 import axios from 'axios';
 
 export default class Content extends React.Component {
@@ -160,10 +161,7 @@ export default class Content extends React.Component {
               </p>
             </div>
             <div className="column right">
-              <h2>Side</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-              </p>
+              <Advertising />
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NavBarClass from "./NavBar";
 import Spinner from "./Spinner";
 import PlayerInfo from "./PlayerInfo";
+import Advertising from "./advertising";
 import axios from 'axios';
 
 class Search extends Component {
@@ -108,10 +109,7 @@ class Search extends Component {
               </p>
             </div>
             <div className="column right">
-              <h2>Side</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-              </p>
+              <Advertising />
             </div>
           </div>
         </div>
