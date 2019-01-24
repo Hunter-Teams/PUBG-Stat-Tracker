@@ -13,7 +13,7 @@
     "server": "node src/server --exec nodemon | pino-colada",
     "dev": "run-p server start",
     "start-server": "node src/server/index.js",
-    "start-server1": "node src/server & react-scripts start"
+    "local-server": "node src/server & react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
