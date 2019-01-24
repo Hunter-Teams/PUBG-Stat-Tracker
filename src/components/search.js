@@ -24,8 +24,10 @@ class Search extends Component {
   handleChangeSearch = (event) => {
     event.preventDefault();
     console.log("Entering playerName");
+    let tempName = event.target.value;
+    tempName = tempName.replace(/\s/g, '');
     this.setState({
-        playerName: event.target.value
+        playerName: tempName,
     })
   }
 
@@ -57,10 +59,19 @@ class Search extends Component {
           playerData: playerData,
         });
         this.forceUpdate();
+      })
+      .catch(err => {
+        console.log(err);
+        if (JSON.stringify(err).includes("429")) {
+          alert(`Wait! You're allowed to send at most 10 request per minute! Please repeat your request in a few seconds`)
+        }
       });  
     })
     .catch(err => {
       console.log(err);
+      if (JSON.stringify(err).includes("429")) {
+        alert(`Wait! You're allowed to send at most 10 request per minute! Please repeat your request in a few seconds`)
+      }
     });
   }
 
