@@ -3,6 +3,7 @@ import NavBarClass from "./NavBar";
 import Spinner from "./Spinner";
 import PlayerInfo from "./PlayerInfo";
 import Advertising from "./advertising";
+import "./columns.css";
 import axios from 'axios';
 
 class Search extends Component {
@@ -23,8 +24,10 @@ class Search extends Component {
   handleChangeSearch = (event) => {
     event.preventDefault();
     console.log("Entering playerName");
+    let tempName = event.target.value;
+    tempName = tempName.replace(/\s/g, '');
     this.setState({
-        playerName: event.target.value
+        playerName: tempName,
     })
   }
 
@@ -56,21 +59,27 @@ class Search extends Component {
           playerData: playerData,
         });
         this.forceUpdate();
+      })
+      .catch(err => {
+        console.log(err);
+        if (JSON.stringify(err).includes("429")) {
+          alert(`Wait! You're allowed to send at most 10 request per minute! Please repeat your request in a few seconds`)
+        }
       });  
     })
     .catch(err => {
       console.log(err);
+      if (JSON.stringify(err).includes("429")) {
+        alert(`Wait! You're allowed to send at most 10 request per minute! Please repeat your request in a few seconds`)
+      }
     });
   }
 
-  
   toggleActive() {
     this.setState({
       isActive: !this.state.isActive
     });
   }
-
-
   renderContent() {
     if (this.state.status==="playerReady") {
       return (
@@ -81,10 +90,9 @@ class Search extends Component {
       return <Spinner message={"Waiting for response.."} />;
     } 
     if (this.state.status==="noPlayer") {
-      return <Spinner message={"Please enter player's name.."} />;
+      return <Spinner message={"Waiting for you to enter a player name... Get to it!"} />;
     }
   }
-
   
   render() {
     return (
@@ -92,30 +100,42 @@ class Search extends Component {
         <div className="header">
           {/*<h5>Stats tracker, leaderboards and game information for PUBG</h5>*/}
         </div>
-        <ul>
+        <ul className="primary1">
           <NavBarClass />
         </ul>
-        <body>
         <div>
           <div className="row">
-            <div className="column left" />  
+            <div className="column left" />
+
             <div className="column middle">
-              <h1 className="tableTitle">Serach fro player name: </h1>
-              <button className = "button" onClick={this.handleClickSearch}>Search</button>
-              <input type='text' placeholder="Type name of the player" onChange={this.handleChangeSearch}/>
-              <p >
-              <div>{this.renderContent()}</div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
+              <div className="flex-containerSearch">
+                <div>
+                  <h1 className="tableTitle">Search a player name: </h1>
+                  <div className='flex-containerSearch'>
+                    <button className = "searchButton" onClick={this.handleClickSearch}>Search</button>
+                    <input id="searchInput" type='text' placeholder="Player handle" onChange={this.handleChangeSearch}/>
+                  </div>
+                  <br/>
+                  <div className="flex-containerSearch">
+                    <div>
+                      {this.renderContent()}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div className="column right">
-              <Advertising />
+              <div className="flex-containerAds">
+                <div className="flex-container">
+                  <Advertising adLink={"https://weedmaps.com/"} adClassName={"advert2"}/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
           
           <div className="bg" />
-        </body>
         <footer>
           <div className="flex-container5">
             <div className="cunyStats" />
