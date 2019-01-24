@@ -1,0 +1,80 @@
+
+.column {
+    float: left;
+    padding: 20px 8px;
+}
+
+.column.left {
+    width: 20%;
+}
+
+.column.right {
+    width: 20%;
+}
+
+.column.middle {
+    width: 60%;
+}
+
+.column.middle.search1 {
+    width: 60%;
+    display: block;
+
+}
+
+.flex-containerSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-containerAbout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+.flex-containerSearch1 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 400px;
+    height: 280px;
+    /*background-color: #333333;*/
+}
+
+.flex-containerSearch2 {
+    margin: 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 350px;
+    height: 220px;
+    /*background-color: #333333;*/
+}
+
+/*.flex-containerSearch >div {
+    width: 120px;
+    !*width: 55px;*!
+    height: 120px;
+}*/
+
+/*.searchButton {
+    background-color: white;
+    background-image: url("../images/search.png");
+    !*text-align: center;*!
+    cursor: pointer;
+}*/
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 1375px) {
+    .column.right, .column.left, .column.middle, .column.middle.search1 {
+        width: 100%;
+    }
+}
+
+footer {
+    height: 5vh;
+    color: whitesmoke;
+}

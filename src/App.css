@@ -24,35 +24,6 @@
   color: #3c1a1a;
 }
 
-.column {
-  float: left;
-  padding: 20px 8px;
-}
-
-.column.left {
-  width: 18%;
-}
-
-.column.right {
-  width: 20%;
-}
-
-.column.middle {
-  width: 60%;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column.side, .column.middle {
-    width: 100%;
-  }
-}
-
-footer {
-  height: 5vh;
-  color: whitesmoke;
-}
-
 .cunyStats2 {
   background: url("./images/cuny2x.png") right;
   background-size: auto;

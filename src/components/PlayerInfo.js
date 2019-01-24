@@ -24,9 +24,9 @@ class PlayerInfo extends Component {
         )
         return (
             <table>
-                <tr>
+                <tbody>
                     <th>Mode</th> <th>Duo</th>  <th>Solo</th>  <th>Squad</th> 
-                </tr>
+                </tbody>
                 {allParams}               
             </table>
         );

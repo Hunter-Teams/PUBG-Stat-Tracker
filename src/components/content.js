@@ -1,8 +1,10 @@
 import React from "react";
-import "../index.css";
+//import "./content.css";
 import Leaderboard from "./leaderboard";
 import Spinner from "./Spinner";
 import Advertising from "./advertising";
+import "./vertNavbar.css";
+import "./columns.css";
 import axios from 'axios';
 
 export default class Content extends React.Component {
@@ -38,8 +40,8 @@ export default class Content extends React.Component {
         dataRecieved: true,
         currentMode: mode,
       });
-      console.log("this.state.currenyMode content")
-      console.log(this.state.currenyMode);
+      console.log("this.state.currentMode content")
+      console.log(this.state.currentMode);
       this.forceUpdate();
     })
     .catch(err => {
@@ -101,14 +103,26 @@ export default class Content extends React.Component {
       return (
         <div>
           <div className="row">
-            <div className="column left" />
-  
+            <div className="column left">
+              <div className="flex-containerSearch2">
+                <div className="flex-container">
+
+              <ul className="ulVertNav">
+                <li className="label">Mode</li>
+                <li className="liVertNav"><button onClick={this.tryModeSolo}>Solo</button></li>
+                <li className="liVertNav"><button onClick={this.tryModeDuo}>Duo</button></li>
+                <li className="liVertNav"><button onClick={this.tryModeSquad}>Squad</button></li>
+              </ul>
+                </div>
+              </div>
+            {/*<button onClick={this.tryModeSolo}>Solo</button>
+            <button onClick={this.tryModeDuo}>Duo</button>
+            <button onClick={this.tryModeSquad}>Squad</button>*/}
+            </div>
             <div className="column middle">
               <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
-              <button onClick={this.tryModeSolo}>Solo</button>
-              <button onClick={this.tryModeDuo}>Duo</button>
-              <button onClick={this.tryModeSquad}>Squad</button>
 
+              {/*<Spinner message={"Loading..."} />*/}
               <Leaderboard table = {this.state.table}  />
               <p className="tableFoot">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -121,7 +135,39 @@ export default class Content extends React.Component {
         </div>
       );
     } else {
-      return <Spinner message={"Please wait.."} />;
+      return (
+          <div>
+            <div className="row">
+                <div className="column left">
+                  <div className="flex-containerSearch2">
+                    <div className="flex-container">
+
+                      <ul className="ulVertNav">
+                        <li className="label">Mode</li>
+                        <li className="liVertNav"><button onClick={this.tryModeSolo}>Solo</button></li>
+                        <li className="liVertNav"><button onClick={this.tryModeDuo}>Duo</button></li>
+                        <li className="liVertNav"><button onClick={this.tryModeSquad}>Squad</button></li>
+                      </ul>
+                    </div>
+                  </div>
+                  {/*<button onClick={this.tryModeSolo}>Solo</button>
+            <button onClick={this.tryModeDuo}>Duo</button>
+            <button onClick={this.tryModeSquad}>Squad</button>*/}
+                </div>
+              <div className="column middle">
+                <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
+
+
+                <Spinner message={"Loading..."} />
+                <p className="tableFoot">
+                </p>
+              </div>
+              <div className="column right">
+                <Advertising />
+              </div>
+            </div>
+          </div>
+          );
     }
   }
 

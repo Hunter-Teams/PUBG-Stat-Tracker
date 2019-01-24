@@ -10,15 +10,13 @@ class TopTen extends Component {
         <div className="header">
           {/*<h5>Stats tracker, leaderboards and game information for PUBG</h5>*/}
         </div>
-        <ul>
+        <ul className="primary1">
           <NavBarClass />
         </ul>
-        <body>
           <div>
             <Content />
           </div>
           <div className="bg" />
-        </body>
         <footer>
           <div className="flex-container5">
             <div className="cunyStats" />
