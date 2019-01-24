@@ -1,9 +1,11 @@
 import React from "react";
-import "../index.css";
-import PropTypes from "prop-types";
+//import "./content.css";
 import Leaderboard from "./leaderboard";
 import Spinner from "./Spinner";
-import axios from "axios";
+import Advertising from "./advertising";
+import "./vertNavbar.css";
+import "./columns.css";
+import axios from 'axios';
 
 export default class Content extends React.Component {
   constructor(props) {
@@ -13,27 +15,118 @@ export default class Content extends React.Component {
     this.state = {
       isActive: false,
       table: [],
-      dataRecieved: false
+      dataRecieved: false,
+      currentMode: "solo",
+      exceedTen: false,
+      timeQueue: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setMode= this.setMode.bind(this);
+    this.canRequestMore = this.canRequestMore.bind(this);
+    this.handleWaitTime= this.handleWaitTime.bind(this);
   }
 
+  canRequestMore(date1){
+    var newTimeQueue = this.state.timeQueue;
+    if (newTimeQueue.length < 9) {
+      return newTimeQueue;
+    } else {
+      newTimeQueue[8] = date1;
+      let difference = newTimeQueue[8]- newTimeQueue[0] ;  //In milliseconds
+      difference = difference/(1000*60); //In minutes
+      console.log("differecne in time is:");
+      console.log(difference);
+      if (difference <= 1) {
+        return false;
+      } else {
+        newTimeQueue = newTimeQueue.slice(1);
+        return newTimeQueue;
+      }
+    }
+  }
+
+  setMode(mode, newTimeArr){
+    this.setState({
+      dataRecieved: false,
+    });   
+    axios.get(`http://localhost:3001/api/${mode}`)
+    .then(response => {
+      console.log(response);
+      var newArr = [];
+      response.data.forEach(elem => {
+        //console.log(elem);
+        newArr.push(elem);
+      })
+      //console.log(newArr);
+      let timeArr = newTimeArr;
+      timeArr.push(Date.now());
+      console.log(timeArr);
+      this.setState({
+        timeQueue: timeArr,
+        table: newArr,
+        dataRecieved: true,
+        currentMode: mode,
+      });
+      // console.log("this.state.currentMode content")
+      // console.log(this.state.currentMode);
+      // this.forceUpdate();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  handleWaitTime(mode){
+    var dateNow = Date.now();
+    var resultTime = this.canRequestMore(dateNow);
+    if (resultTime!==false){
+      this.setMode(mode,resultTime);
+    } else {
+      let waitTimeQueue  = this.state.timeQueue;
+      waitTimeQueue[8] = dateNow;
+      let difference = waitTimeQueue[8]- waitTimeQueue[0] ;  //In milliseconds
+      let waitTime = 60 - difference/(1000);   //Wait in secs
+      alert(`Wait! You're allowed to send at most 10 request per minute! Please wait at least ${waitTime} sec`)
+    }
+  }
+  tryModeSolo = (e) => {
+    e.preventDefault();
+    this.handleWaitTime("solo");
+  }
+
+  tryModeDuo = (e) => {
+    e.preventDefault();
+    this.handleWaitTime("duo");
+  }
+
+  tryModeSquad = (e) => {
+    e.preventDefault();
+    this.handleWaitTime("squad");
+  }
+  
   handleSubmit() {
-    axios
-      .get(`http://localhost:3001/api`)
+    axios.get(`http://localhost:3001/api`)
       .then(response => {
         //console.log(response.data);
         var newArr = [];
         response.data.forEach(elem => {
           //console.log(elem);
           newArr.push(elem);
-        });
+        })
         //console.log(newArr);
+        let timeArr = this.state.timeQueue;
+        if (timeArr.length < 9) {
+          let d1 = Date.now();
+          console.log(d1);
+          timeArr.push(d1);
+        }
+        console.log(timeArr);
         this.setState({
+          timeQueue: timeArr,
           table: newArr,
-          dataRecieved: true
+          dataRecieved: true,
         });
-        console.log("this.state.table content");
+        console.log("this.state.table content")
         console.log(this.state.table);
         this.forceUpdate();
       })
@@ -50,6 +143,7 @@ export default class Content extends React.Component {
 
   componentDidMount() {
     this.handleSubmit();
+    
   }
 
   renderContent() {
@@ -57,42 +151,78 @@ export default class Content extends React.Component {
       return (
         <div>
           <div className="row">
-            <div className="column left" />
+            <div className="column left">
+              <div className="flex-containerSearch2">
+                <div className="flex-container">
 
+              <ul className="ulVertNav">
+                <li className="label">Mode</li>
+                <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeSolo}>Solo</button></li>
+                <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeDuo}>Duo</button></li>
+                <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeSquad}>Squad</button></li>
+              </ul>
+                </div>
+              </div>
+            {/*<button onClick={this.tryModeSolo}>Solo</button>
+            <button onClick={this.tryModeDuo}>Duo</button>
+            <button onClick={this.tryModeSquad}>Squad</button>*/}
+            </div>
             <div className="column middle">
-              <h1 className="tableTitle">Leaderboard: Solo</h1>
-              <Leaderboard table={this.state.table} />
+              <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
+              <Leaderboard table = {this.state.table}  />
               <p className="tableFoot">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas sit amet pretium urna. Vivamus venenatis velit nec
-                neque ultricies, eget elementum magna tristique. Quisque
-                vehicula, risus eget aliquam placerat, purus leo tincidunt eros,
-                eget luctus quam orci in velit. Praesent scelerisque tortor sed
-                accumsan convallis.
               </p>
             </div>
             <div className="column right">
-              <h2>Side</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas sit amet pretium urna. Vivamus venenatis velit nec
-                neque ultricies, eget elementum magna tristique. Quisque
-                vehicula, risus eget aliquam placerat, purus leo tincidunt eros,
-                eget luctus quam orci in velit. Praesent scelerisque tortor sed
-                accumsan convallis.
-              </p>
+              <Advertising />
             </div>
           </div>
         </div>
       );
     } else {
-      return <Spinner message={"Please accept location request"} />;
+      return (
+          <div>
+            <div className="row">
+                <div className="column left">
+                  <div className="flex-containerSearch2">
+                    <div className="flex-container">
+
+                      <ul className="ulVertNav">
+                        <li className="label">Mode</li>
+                        <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeSolo}>Solo</button></li>
+                        <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeDuo}>Duo</button></li>
+                        <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeSquad}>Squad</button></li>
+                      </ul>
+                    </div>
+                  </div>
+                  {/*<button onClick={this.tryModeSolo}>Solo</button>
+            <button onClick={this.tryModeDuo}>Duo</button>
+            <button onClick={this.tryModeSquad}>Squad</button>*/}
+                </div>
+              <div className="column middle">
+                <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
+                <div className="flex-containerSearch">
+                  <div className="centerMe">
+                    <Spinner message={"Loading..."} />
+                  </div>
+                </div>
+                <p className="tableFoot">
+                </p>
+              </div>
+              <div className="column right">
+                <Advertising />
+              </div>
+            </div>
+          </div>
+          );
     }
   }
+
 
   render() {
     console.log("this.state.dataRecieved");
     console.log(this.state.dataRecieved);
     return <div>{this.renderContent()}</div>;
   }
+
 }

@@ -1,0 +1,137 @@
+
+
+.vertical-text {
+    transform: rotate(-90deg);
+    transform-origin: right center 0;
+    color: purple;
+}
+
+ul.ulVertNav {
+    list-style-type: none;
+    float: right;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    color: #691b1c;
+    background-color: #f1f1f1;
+    border: 1px solid #691b1c;
+}
+
+li.label {
+    display: block;
+    border-bottom: 1px solid #691b1c;
+    text-align: center;
+    padding: 8px 16px;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: #691b1c;
+    color: #c98905;
+}
+
+li.liVertNav a {
+    display: block;
+    color: #691b1c;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li.liVertNav {
+    border-bottom: 1px solid #691b1c;
+    text-align: center;
+}
+
+li.liVertNav:last-child {
+    border-bottom: none;
+}
+
+li.liVertNav a.active {
+    background-color: #691b1c;
+    color: #c98905;
+}
+
+li.liVertNav a:hover:not(.active) {
+    background-color: #000;
+    color: #c98905;
+}
+
+.tableColor {
+    color: #691b1c;
+}
+
+.link-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+}
+
+.link-buttonAscending {
+    /*background-color: transparent;*/
+    background: url("../images/chevron_up-256.png") no-repeat center center;
+    width:15px;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+}
+
+.link-buttonDescending {
+    /*background-color: transparent;*/
+    background: url("../images/chevron_down-256.png") no-repeat  center center;
+    width: 15px;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+}
+
+.link-button:hover,
+.link-button:focus {
+    background-color: #000;
+    color: #c98905;
+    text-decoration: none;
+}
+
+.button {
+    background-color: transparent;
+    border-left: 10px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+}
+
+
+.link-button1 {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: #691b1c;
+    width: 98px
+}
+
+.link-button1:hover,
+.link-button1:focus {
+    background-color: #000;
+    color: #c98905;
+    text-decoration: none;
+}
+
+.button1 {
+    background-color: transparent;
+    border-left: 10px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+}
