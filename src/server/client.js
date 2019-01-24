@@ -5,7 +5,7 @@ const client = new pg.Client({
     user: "postgres",
     host: 'localhost',
     database: 'pubg_stats',
-    password: '23rdMARDIV',  //  ENTER YOUR PASSWORD!!!
+    password: '',  //  ENTER YOUR PASSWORD!!!
     port: 5432
 })
 // connect your client to your database
