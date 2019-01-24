@@ -8,15 +8,20 @@ class TopTen extends Component {
     return (
       <div className="App">
         <div className="header">
-          {/*<h5>Stats tracker, leaderboards and game information for PUBG</h5>*/}
+          <a
+            href={"https://developer.playbattlegrounds.com/?locale=en"}
+            style={{ color: "#691b1c" }}
+          >
+            Get PUBG API info!
+          </a>
         </div>
         <ul className="primary1">
           <NavBarClass />
         </ul>
-          <div>
-            <Content />
-          </div>
-          <div className="bg" />
+        <div>
+          <Content />
+        </div>
+        <div className="bg" />
         <footer>
           <div className="flex-container5">
             <div className="cunyStats" />

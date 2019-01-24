@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
 
-//simple func that return image of an ad
+//simple func that returns image of an advertisement and the url
 const Advertising = props => {
     return (
       <div>
