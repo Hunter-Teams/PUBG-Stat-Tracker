@@ -22,12 +22,17 @@ class Contact extends Component {
                                 <div><h1>CUNY2X PUBG-Stat-Tracker</h1>
                                     <p>
                                         Contact stuff
-                                    </p></div>
+                                    </p>
+                                </div>
 
                             </div>
                         </div>
                         <div className="column right">
-                            <Advertising />
+                            <div className="flex-containerAds">
+                                <div className="flex-container">
+                                    <Advertising adLink={"https://www.adobe.com/creativecloud/plans.html?plan=edu&locale=en&sdid=LCDWTQF3&mv=display&gclid=EAIaIQobChMI4_S59JiG4AIVr6GzCh2GHARkEAEYASAAEgJoWvD_BwE\n"} adClassName={"advert3"}/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

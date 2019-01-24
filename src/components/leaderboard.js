@@ -127,41 +127,90 @@ class Leaderboard extends Component {
     );
       return (
         <div>
-              
-              
+
           <table>
             <tr>
-              <th>Rank
-                <button className="descButton" onClick={this.SortRankDesc}></button>
-                <button className="ascButton"onClick={this.SortRankAsc}></button>
+              <th className="tableColor">Rank
+                <div className="flex-containerButtons">
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonAscending" onClick={this.SortRankAsc}>XXXX</button>
+                    </div>
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonDescending" onClick={this.SortRankDesc}>XXXX</button>
+                  </div>
+                </div>
               </th>
-              <th>Name
+              <th className="tableColor">Name
+                <div className="flex-containerButtons">
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonAscending" onClick={this.SortNameAsc}>XXXX</button>
+                    </div>
+                  <div className="flex-containerButtons">
+                  <button type="button" className="link-buttonDescending" onClick={this.SortNameDesc}>XXXX</button>
+                  </div>
+                </div>{/*
                 <button className="descButton" onClick={this.SortNameDesc}></button>
-                <button className="ascButton"onClick={this.SortNameAsc}></button>
+                <button className="ascButton"onClick={this.SortNameAsc}></button>*/}
               </th>
-              <th>K/D
-                <button className="descButton" onClick={this.SortKDDesc}></button>
-                <button className="ascButton"onClick={this.SortKDAsc}></button>
+              <th className="tableColor">K/D
+                <div className="flex-containerButtons">
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonAscending" onClick={this.SortKDAsc}>XXXX</button>
+                    </div>
+                  <div className="flex-containerButtons">
+                  <button type="button" className="link-buttonDescending" onClick={this.SortKDDesc}>XXXX</button>
+                  </div>
+                </div>
               </th>
-              <th>WR
-                <button className="descButton" onClick={this.SortWRDesc}></button>
-                <button className="ascButton"onClick={this.SortWRAsc}></button>
+              <th className="tableColor">WR
+                <div className="flex-containerButtons">
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonAscending" onClick={this.SortWRAsc}>XXXX</button>
+                    </div>
+                  <div className="flex-containerButtons">
+                  <button type="button" className="link-buttonDescending" onClick={this.SortWRDesc}>XXXX</button>
+                  </div>
+                </div>
               </th>
-              <th>Kills
-                <button className="descButton" onClick={this.SortKillDesc}></button>
-                <button className="ascButton"onClick={this.SortKillAsc}></button>
+              <th className="tableColor">Kills
+                <div className="flex-containerButtons">
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonAscending" onClick={this.SortKillAsc}>XXXX</button>
+                  </div>
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonDescending" onClick={this.SortKillDesc}>XXXX</button>
+                </div>
+                </div>
               </th>
-              <th>Wins
-                <button className="descButton" onClick={this.SortWinDesc}></button>
-                <button className="ascButton"onClick={this.SortWinAsc}></button>
+              <th className="tableColor">Wins
+                <div className="flex-containerButtons">
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonAscending" onClick={this.SortWinAsc}>XXXX</button>
+                  </div>
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonDescending" onClick={this.SortWinDesc}>XXXX</button>
+                  </div>
+                </div>
               </th>
-              <th>Matches
-                <button className="descButton" onClick={this.SortMatchDesc}></button>
-                <button className="ascButton"onClick={this.SortMatchAsc}></button>
+              <th className="tableColor">Matches
+                <div className="flex-containerButtons">
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonAscending" onClick={this.SortMatchAsc}>XXXX</button>
+                  </div>
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonDescending" onClick={this.SortMatchDesc}>XXXX</button>
+                  </div>
+                </div>
               </th>
-              <th>Score
-                <button className="descButton" onClick={this.SortScoreDesc}></button>
-                <button className="ascButton"onClick={this.SortScoreAsc}></button>
+              <th className="tableColor">Score
+                <div className="flex-containerButtons">
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonAscending" onClick={this.SortScoreAsc}>XXXX</button>
+                  </div>
+                  <div className="flex-containerButtons">
+                    <button type="button" className="link-buttonDescending" onClick={this.SortScoreDesc}>XXXX</button>
+                  </div>
+                </div>
               </th>
             </tr>
             {arr}

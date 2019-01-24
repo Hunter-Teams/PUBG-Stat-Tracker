@@ -109,9 +109,9 @@ export default class Content extends React.Component {
 
               <ul className="ulVertNav">
                 <li className="label">Mode</li>
-                <li className="liVertNav"><button onClick={this.tryModeSolo}>Solo</button></li>
-                <li className="liVertNav"><button onClick={this.tryModeDuo}>Duo</button></li>
-                <li className="liVertNav"><button onClick={this.tryModeSquad}>Squad</button></li>
+                <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeSolo}>Solo</button></li>
+                <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeDuo}>Duo</button></li>
+                <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeSquad}>Squad</button></li>
               </ul>
                 </div>
               </div>
@@ -121,11 +121,8 @@ export default class Content extends React.Component {
             </div>
             <div className="column middle">
               <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
-
-              {/*<Spinner message={"Loading..."} />*/}
               <Leaderboard table = {this.state.table}  />
               <p className="tableFoot">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </div>
             <div className="column right">
@@ -144,9 +141,9 @@ export default class Content extends React.Component {
 
                       <ul className="ulVertNav">
                         <li className="label">Mode</li>
-                        <li className="liVertNav"><button onClick={this.tryModeSolo}>Solo</button></li>
-                        <li className="liVertNav"><button onClick={this.tryModeDuo}>Duo</button></li>
-                        <li className="liVertNav"><button onClick={this.tryModeSquad}>Squad</button></li>
+                        <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeSolo}>Solo</button></li>
+                        <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeDuo}>Duo</button></li>
+                        <li className="liVertNav"><button type="button" className="link-button1" onClick={this.tryModeSquad}>Squad</button></li>
                       </ul>
                     </div>
                   </div>
@@ -156,9 +153,11 @@ export default class Content extends React.Component {
                 </div>
               <div className="column middle">
                 <h1 className="tableTitle">Leaderboard: {this.state.currentMode}</h1>
-
-
-                <Spinner message={"Loading..."} />
+                <div className="flex-containerSearch">
+                  <div className="centerMe">
+                    <Spinner message={"Loading..."} />
+                  </div>
+                </div>
                 <p className="tableFoot">
                 </p>
               </div>

@@ -29,7 +29,11 @@ class About extends Component {
               </div>
             </div>
             <div className="column right">
-              <Advertising />
+              <div className="flex-containerAds">
+                <div className="flex-container">
+                  <Advertising adLink={"https://www.playstation.com/en-us/"} adClassName={"advert1"}/>
+                </div>
+              </div>
             </div>
           </div>
         </div>

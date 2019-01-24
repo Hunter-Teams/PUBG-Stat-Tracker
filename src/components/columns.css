@@ -35,6 +35,16 @@
     height: 60vh;
 }
 
+.flex-containerAds{
+    margin: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*width: 350px;*/
+    /*height: 10vh;*/
+    /*background-color: #333333;*/
+}
+
 .flex-containerSearch1 {
     display: flex;
     align-items: flex-end;

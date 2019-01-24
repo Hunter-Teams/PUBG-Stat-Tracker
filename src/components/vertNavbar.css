@@ -54,6 +54,84 @@ li.liVertNav a:hover:not(.active) {
     color: #c98905;
 }
 
+.tableColor {
+    color: #691b1c;
+}
+
+.link-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+}
+
+.link-buttonAscending {
+    /*background-color: transparent;*/
+    background: url("../images/chevron_up-256.png") no-repeat center center;
+    width:15px;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+}
+
+.link-buttonDescending {
+    /*background-color: transparent;*/
+    background: url("../images/chevron_down-256.png") no-repeat  center center;
+    width: 15px;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+}
+
+.link-button:hover,
+.link-button:focus {
+    background-color: #000;
+    color: #c98905;
+    text-decoration: none;
+}
+
 .button {
-    background-color: white;
+    background-color: transparent;
+    border-left: 10px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+}
+
+
+.link-button1 {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: #691b1c;
+    width: 98px
+}
+
+.link-button1:hover,
+.link-button1:focus {
+    background-color: #000;
+    color: #c98905;
+    text-decoration: none;
+}
+
+.button1 {
+    background-color: transparent;
+    border-left: 10px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
 }

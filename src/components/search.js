@@ -115,7 +115,11 @@ class Search extends Component {
             </div>
 
             <div className="column right">
-              <Advertising />
+              <div className="flex-containerAds">
+                <div className="flex-container">
+                  <Advertising adLink={"https://weedmaps.com/"} adClassName={"advert2"}/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
