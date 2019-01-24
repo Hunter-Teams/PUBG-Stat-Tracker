@@ -48,8 +48,8 @@ export default class Content extends React.Component {
   setMode(mode, newTimeArr){
     this.setState({
       dataRecieved: false,
-    });   
-    axios.get(`http://localhost:3001/api/${mode}`)
+    });
+    axios.get(`/api/${mode}`)
     .then(response => {
       console.log(response);
       var newArr = [];
@@ -105,7 +105,7 @@ export default class Content extends React.Component {
   }
   
   handleSubmit() {
-    axios.get(`http://localhost:3001/api`)
+    axios.get(`/api`)
       .then(response => {
         //console.log(response.data);
         var newArr = [];

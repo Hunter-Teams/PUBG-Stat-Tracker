@@ -1,6 +1,6 @@
 const pg = require("pg");
 // configure the path to the database that you wish to interact with
-const postgresUrl= 'postgres://localhost/input'
+//const postgresUrl= 'postgres://localhost/input'
 // create a new client
 const client = new pg.Client({
     user: "postgres",
